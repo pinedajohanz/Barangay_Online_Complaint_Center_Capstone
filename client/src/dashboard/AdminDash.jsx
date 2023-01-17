@@ -8,5 +8,5 @@ export default function AdminDash() {
     <NavbarBootstrap />
         <h1>AdminDash</h1>
     </>
-  )
+  )  
 }
