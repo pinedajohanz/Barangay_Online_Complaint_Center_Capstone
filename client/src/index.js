@@ -46,7 +46,7 @@ root.render(
             	<Route path="/" element={<App />} />
                 <Route index element={<Home />} />
                 <Route path="/about" element={<AboutPage />} />
-                <Route path="/contact" element={<ContactUsPage />} />
+                <Route path="/contact" element={<ContactUsPage />} /> 
 
                 <Route path="/login" element={<LogIn />} />
                 <Route path="/signup" element={<SignUp />} />
