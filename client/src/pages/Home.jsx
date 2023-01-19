@@ -1,5 +1,6 @@
 import {NavbarBootstrap} from '../components/Navbarbs'
 import { Link } from "react-router-dom";
+import LogInSuccess from '../toast/LogInSuccess';
 
 const Home = () => {
   return (
@@ -8,6 +9,8 @@ const Home = () => {
         
           <NavbarBootstrap />
           <div> Home Page</div>
+          
+          <LogInSuccess />
 
           <Link to="/login">
             <button>File a Complaint (REDIRECT TO LOG IN PAGE)</button>

@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import {NavbarBootstrap} from "./Navbarbs"
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
 import axios from "axios";
-// import { useHistory } from 'react-router-dom'
+import { ToastContainer, toast, Flip } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css';
+import SignUpSuccess from "../toast/SignUpSuccess";
+
+// toast.configure()
 
 export const LogIn = ({ setAuth }) => {
     // const [state, setState] = useState('initial/default value')
@@ -21,12 +23,11 @@ export const LogIn = ({ setAuth }) => {
     const onChange = (e) => {    //username     : testusername   
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
-
-    //deconstructing the username and password variable from the inputs
-    // const { username, password } = inputs
     
-    // const history = useHistory()
-
+    const showToast = () => {
+        toast.info("Redirecting . . ."
+        );
+    }
 
     const onSubmitForm = async (e) => {
         e.preventDefault()
@@ -46,11 +47,73 @@ export const LogIn = ({ setAuth }) => {
         .then(res => {
             console.log(res)
             if(res.status === 200){
+                // showToast()
+                toast.success("Successfully logged in!")
+                // <SignUpSuccess />
                 window.location = '/UserDash'
             }
-        })
+        }
+        )
 
-        //  const parseRes = await response.json();
+    } catch (error) {
+        console.log(error.message)
+        toast.warn("Something went wrong")
+    }
+    }
+
+    return (
+        <> 
+        <NavbarBootstrap />
+        <div className="form-box d-flex mx-auto my-5 align-items-center justify-content-center">
+        
+            <Form onSubmit={onSubmitForm} className="needs-validation">
+                <h2>Log In</h2>
+                <Form.Group className="mb-2 was-validated" controlId="formUsername">
+                    <Form.Label column sm={2}>Username</Form.Label>
+                            <Form.Control name="username" value={formData.username} onChange={onChange} type="text" placeholder="Enter username here" required />
+                            <div className="invalid-feedback"> Please Enter your username </div>
+                </Form.Group>
+                <Form.Group className="mb-2 was-validated" controlId="formPassword">
+                    <Form.Label column sm={2}>Password</Form.Label>
+                            <Form.Control name="password" value={formData.password} onChange={onChange} type="password" placeholder="***********" required />
+                            <div className="invalid-feedback"> Please Enter your password </div>
+                </Form.Group>
+                <Button className="block w-100" variant="primary" type="submit" >
+                    Submit
+                </Button>
+                <Link to="/signup">
+                    <button className="btn btn-success my-3 block w-100" onClick={showToast}> 
+                    Don't have an account yet? Sign Up here!
+                    {/* <Link to="/signup" onClick={showToast}> Don't have an account yet? Sign Up here! </Link> */}
+                    </button>  
+                </Link>
+                
+                
+            </Form>
+            <ToastContainer
+            position="top-right"
+            autoClose={9000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored" 
+            transition={Flip}  />
+        </div>
+        
+        </>
+    )
+}
+
+        // after onchange old format
+            //deconstructing the username and password variable from the inputs
+            // const { username, password } = inputs
+
+        // after .then old format
+           //  const parseRes = await response.json();
         //  if (parseRes.token) {
         //      // if username = admin & password = admin, redirect to Admin dashboard (Insert in database admin credentials)
         //      // login successful, redirect to Resident dashboard 
@@ -60,48 +123,16 @@ export const LogIn = ({ setAuth }) => {
         //      setAuth(false)
         //      console.log("Something wrong")
         // }
-     
-    } catch (error) {
-        console.log(error.message)
-    }
-    }
 
-    // const handleChange = (e) => {
+
+    // after catch error old format
+  // const handleChange = (e) => {
     //     if (e.target.name === 'username') {
     //         setUsername(e.target.value);
     //     } else if (e.target.name === 'password') {
     //         setPassword(e.target.value);
     //     }
     // };
-
-    return (
-        <> 
-        <NavbarBootstrap />
-        <div className="form-box d-flex mx-auto my-5">
-            <Form onSubmit={onSubmitForm}>
-                <h2>Log In</h2>
-                <Form.Group className="mb-3" controlId="formUsername">
-                    <Form.Label column sm={2}>Username</Form.Label>
-                            <Form.Control name="username" value={formData.username} onChange={onChange} type="text" placeholder="Jiheon23" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formPassword">
-                    <Form.Label column sm={2}>Password</Form.Label>
-                            <Form.Control name="password" value={formData.password} onChange={onChange} type="password" placeholder="***********" />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
-                <Link to="/signup">
-                    <button className="btn btn-success my-3">
-                        Don't have an account yet? Sign Up here!
-                    </button>
-                </Link>
-            </Form>
-            
-        </div>
-        </>
-    )
-}
 
 
 
