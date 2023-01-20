@@ -6,8 +6,7 @@ import Form from 'react-bootstrap/Form'
 import axios from "axios";
 import { ToastContainer, toast, Flip } from 'react-toastify'; 
 import 'react-toastify/dist/ReactToastify.css';
-import SignUpSuccess from "../toast/SignUpSuccess";
-
+import { breadcrumbsClasses } from "@mui/material";
 // toast.configure()
 
 export const LogIn = ({ setAuth }) => {
@@ -24,42 +23,53 @@ export const LogIn = ({ setAuth }) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
     
-    const showToast = () => {
-        toast.info("Redirecting . . ."
-        );
-    }
 
     const onSubmitForm = async (e) => {
         e.preventDefault()
         
     try {
-        //making a body object from the values of username and password
-        // const body = { username, password }
-
         //fetch api for POST method
         axios.post("http://localhost:5000/login", formData
-        // {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify( body )
-        // }
         )
+
         .then(res => {
-            console.log(res)
-            if(res.status === 200){
-                // showToast()
-                toast.success("Successfully logged in!")
-                // <SignUpSuccess />
-                window.location = '/UserDash'
+            // console.log(res)
+            const x = JSON.parse(res.config.data)
+            switch(x.username) {
+                case 'admin':
+                    window.location = '/AdminDash';
+                     break;
+                default:
+                    window.location = '/UserDash'
+                    break 
             }
-        }
-        )
+
+            // if(res.username === 'admin'){
+            //     window.location = '/AdminDash'
+            // }
+            // else {
+            //     window.location = '/UserDash'
+                         
+            // }
+        })
+
+        // .then(res => {
+        //     console.log(res)
+        //     if(res.username !== 'admin' && res.status === 200){
+        //         window.location = '/UserDash'
+        //     }
+        // }
+        // )
+
+  
 
     } catch (error) {
         console.log(error.message)
-        toast.warn("Something went wrong")
+        toast.warn("Invalid Username or Password")
+        }
     }
-    }
+
+
 
     return (
         <> 
@@ -79,12 +89,11 @@ export const LogIn = ({ setAuth }) => {
                             <div className="invalid-feedback"> Please Enter your password </div>
                 </Form.Group>
                 <Button className="block w-100" variant="primary" type="submit" >
-                    Submit
+                    Log in
                 </Button>
                 <Link to="/signup">
-                    <button className="btn btn-success my-3 block w-100" onClick={showToast}> 
+                    <button className="btn btn-success my-3 block w-100"> 
                     Don't have an account yet? Sign Up here!
-                    {/* <Link to="/signup" onClick={showToast}> Don't have an account yet? Sign Up here! </Link> */}
                     </button>  
                 </Link>
                 
@@ -107,6 +116,19 @@ export const LogIn = ({ setAuth }) => {
         </>
     )
 }
+
+
+        // after try {
+            //making a body object from the values of username and password
+            // const body = { username, password }
+
+            // after .post
+            // {
+        //     method: 'POST',
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify( body )
+        // }
+        
 
         // after onchange old format
             //deconstructing the username and password variable from the inputs
