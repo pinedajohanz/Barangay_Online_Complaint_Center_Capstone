@@ -4,10 +4,9 @@ import {NavbarBootstrap} from "./Navbarbs";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from "axios";
-import SignUpSuccess from "../toast/SignUpSuccess";
 
 export const SignUp = ( {setAuth} ) => {
-    
+    // setFormData assigns a value from input of user
     const [formData, setFormData] = useState({
         first_name: "",
         middle_init: "",
@@ -33,12 +32,11 @@ export const SignUp = ( {setAuth} ) => {
             //fetch api for POST method
             axios.post("http://localhost:5000/signup", formData
             )
+            // // response from server is stored in 'res'
             .then(res => {
-                console.log(res)
+                // if we got a 200 status it will redirect to Log In page
                 if(res.status === 200){
-                    <SignUpSuccess />
-                    window.location = '/login'
-                    
+                    window.location = '/login'    
                 }
             })
         } catch (error) {
@@ -49,21 +47,21 @@ export const SignUp = ( {setAuth} ) => {
     return (
         <> 
         <NavbarBootstrap />
-        <div className="form-box d-flex mx-auto my-5 align-items-center justify-content-center">
+        <div className="form-box d-flex mx-auto my-5 align-items-center justify-content-center shadow-lg">
             <Form onSubmit={onSubmitForm} className="needs-validation">
-            <h2>Sign Up</h2>
+            <h2 className="text-center">Sign Up</h2>
                 <Form.Group className="mb-3 was-validated" controlId="formfirst_name">
-                    <Form.Label column sm={2}>First name</Form.Label>
+                    <Form.Label column sm>First name</Form.Label>
                             <Form.Control name="first_name" value={formData.first_name} onChange={onChange} type="text" placeholder="Johanz" required />
                             <div className="invalid-feedback"> Please Enter your first name </div>
                 </Form.Group>
                 <Form.Group className="mb-3 was-validated" controlId="formMiddle_init">
-                    <Form.Label column sm={2}>Middle initial</Form.Label>
+                    <Form.Label column sm>Middle initial</Form.Label>
                             <Form.Control name="middle_init" value={formData.middle_init} onChange={onChange} type="text" placeholder="B." required />
                             <div className="invalid-feedback"> Please Enter your middle initial </div>
                 </Form.Group>
                 <Form.Group className="mb-3 was-validated" controlId="formlast_name">
-                    <Form.Label column sm={2}>Last name</Form.Label>
+                    <Form.Label column sm>Last name</Form.Label>
                             <Form.Control name="last_name" value={formData.last_name} onChange={onChange} type="text" placeholder="Pineda" required/>
                             <div className="invalid-feedback"> Please Enter your last name </div>
                 </Form.Group>
@@ -78,12 +76,12 @@ export const SignUp = ( {setAuth} ) => {
                             <div className="invalid-feedback"> Please Enter your Subdivision </div>
                 </Form.Group>
                 <Form.Group className="mb-3 was-validated" controlId="formhouse_street_address">
-                    <Form.Label column sm={2}>House Street</Form.Label>
+                    <Form.Label column sm>House Street</Form.Label>
                             <Form.Control name="house_street_address" value={formData.house_street_address} onChange={onChange} type="text" placeholder="North street" required/>
                             <div className="invalid-feedback"> Please Enter your House street </div>
                 </Form.Group>
                 <Form.Group className="mb-3 was-validated" controlId="formcontact_number">
-                    <Form.Label column sm={2}>Contact Number</Form.Label>
+                    <Form.Label column sm>Contact Number</Form.Label>
                             <Form.Control name="contact_number" value={formData.contact_number} onChange={onChange} type="number" placeholder="09975113834" required/>
                             <div className="invalid-feedback"> Please Enter your contact number </div>
                 </Form.Group>
@@ -105,6 +103,7 @@ export const SignUp = ( {setAuth} ) => {
                 <Button className="btn btn-primary block w-100" variant="primary" type="submit">
                     Submit
                 </Button>
+                {/* redirect to Log In page */}
                 <Link to="/login">
                     <button className="btn btn-success my-3 block w-100">
                        Already have an account? Log in here!

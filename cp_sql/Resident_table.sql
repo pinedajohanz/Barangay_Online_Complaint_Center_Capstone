@@ -8,8 +8,8 @@ CREATE TABLE Residents (
 	house_street_address VARCHAR(255) NOT NULL,
 	contact_number VARCHAR(12) NOT NULL,
 	email_address VARCHAR(255) NOT NULL,
-	username VARCHAR(50) NOT NULL,
-	password VARCHAR(50) NOT NULL
+	username VARCHAR(50) UNIQUE NOT NULL,
+	password VARCHAR(200) NOT NULL
 );
 
 INSERT INTO Residents (first_name, middle_init, last_name, birthday, subdivision_address, house_street_address, contact_number, email_address, username, password) 

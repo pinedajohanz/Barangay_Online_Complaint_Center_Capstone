@@ -4,8 +4,8 @@ CREATE TABLE Complaints (
   message_comp VARCHAR(255) NOT NULL,
   location_of_complaint VARCHAR(255) NOT NULL,
   type_of_complaint VARCHAR(255) NOT NULL,
-  date_of_filing VARCHAR(55) NOT NULL,
-  time_of_filing VARCHAR(55) NOT NULL,
+  date_of_filing DATE NOT NULL, -- DD/MM/YYYY
+  time_of_filing TIME NOT NULL, -- 14:00
   resident_id INT REFERENCES Residents(resident_id), --FK
   status_info_id INT REFERENCES status_info(status_info_id) --FK
 );
