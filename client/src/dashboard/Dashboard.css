@@ -107,8 +107,12 @@ body {
 
 }
 
-.row #title {
+.row #title, #logout{
     flex: 70%;
+}
+
+.row #logout {
+    background-color: #293846;
 }
 
 .form-border {

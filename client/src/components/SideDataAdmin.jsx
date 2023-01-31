@@ -5,7 +5,7 @@ import ViewListIcon from '@mui/icons-material/ViewList';
 import ReplyIcon from '@mui/icons-material/Reply';
 import PageviewIcon from '@mui/icons-material/Pageview';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-
+import LogOutbtn from './LogOutbtn';
 // array of objects 
 export const SideDataAdmin = [
     {
@@ -27,11 +27,11 @@ export const SideDataAdmin = [
         title: "View Residents Info",
         icon: <ViewListIcon />,
         link: "/ViewAllRes"
-    },
-    {
-        title: "Log Out",
-        icon: <ExitToAppIcon />,
-        link: "/"
     }
+    // {
+    //     title: "Log Out",
+    //     icon: <LogOutbtn />,
+    //     link: "/"
+    // }
    
 ]

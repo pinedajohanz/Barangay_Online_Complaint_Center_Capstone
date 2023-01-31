@@ -1,8 +1,15 @@
 import React from 'react'
-
 import {SideDataRes} from './SideDataRes'
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 const SidebarRes = () => {
+
+    const handleLogout = () => {
+        localStorage.removeItem('user.token')
+        localStorage.removeItem('user.resident_id')
+        window.location = "/"
+    }
+
     return (
         <>
         <div className="container-sidebar">
@@ -32,6 +39,10 @@ const SidebarRes = () => {
                             </li>
                         );
                     })}
+                    <div className='row' id='logout'>
+                    <ExitToAppIcon />
+                    <button className='btn btn-dark' onClick={handleLogout}> Log out</button>
+                    </div>
                 </ul>
             </div>
         </div>

@@ -2,46 +2,48 @@ import React, { useState, useEffect } from 'react'
 import "../../dashboard/Dashboard.css"
 import SideBarAdmin from "../../components/SideBarAdmin";
 import Respondbtn from '../Respondbtn';
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
 
 function ResToComp() {
-  const [AllComp, setAllComp] = useState([{}]);
+  const [AllComp, setAllComp] = useState([]);
 
   const [ids] = AllComp.map(complaints => complaints.complaints_id) // retrieves only 1 ID
 
-  // const [status_info] = AllComp.map(complaints => complaints.status_msg)
+  const [status_info] = AllComp.map(complaints => complaints.status_msg)
 
-  // const [complaints_id, message_comp, ...] = AllComp;
-  console.table(AllComp)
+  //const [complaints_id, message_comp, ...] = AllComp;
   const [sorted, setSorted] = useState({ sorted: "id", reversed: false});
 
   //not working sort by ID
   const SortbyID = () => {
-    setSorted({ sorted: "id", reversed: !sorted.reversed})
-    const idsCopy = [...ids];
-    idsCopy.sort((idsA, idsB ) => {
-      if (sorted.reversed) {
-        return idsA.id - idsB.id
-      }
-      return idsB.id - idsA.id
-    });
-    setAllComp(idsCopy)
-  }
+   setSorted({ sorted: "id", reversed: !sorted.reversed})
+     const idsCopy = [...ids];
+     idsCopy.sort((idsA, idsB ) => {
+       if (sorted.reversed) {
+         return idsA.id - idsB.id
+       }
+       return idsB.id - idsA.id
+     });
+     setAllComp(idsCopy)
+   }
 
-  // working ang status sort but once lang nagana
-  const SortbyStatus = () => {
+   //working ang status sort but once lang nagana
+   const SortbyStatus = () => {
     setSorted({ sorted: "status", reversed: !sorted.reversed});
     const AllCompCopy = [...AllComp];
-    AllCompCopy.sort((AllCompA, AllCompB ) => { 
-      const status_infoA = `${AllCompA.status_msg}`;
-      const status_infoB = `${AllCompB.status_msg}`;
+     AllCompCopy.sort((AllCompA, AllCompB ) => { 
+       const status_infoA = `${AllCompA.status_msg}`;
+       const status_infoB = `${AllCompB.status_msg}`;
 
-      if (sorted.reversed) {
+       if (sorted.reversed) {
         status_infoB.localeCompare(status_infoA);
-      }
-      return status_infoA.localeCompare(status_infoB);
-    });
-    setAllComp(AllCompCopy)
+       }
+       return status_infoA.localeCompare(status_infoB);
+     });
+     setAllComp(AllCompCopy)
   }
+
 
   // re-use function (DISPLAY ALL COMPLAINTS) for See Responses to Complaints section (ADMIN)
   // GET all Complaints from Residents
@@ -65,6 +67,14 @@ function ResToComp() {
     getAllComp();
   }, []);
 
+  // const columns = [
+  //   { 
+
+  //     field: 'respond',
+  //     header: 'Respond',
+  //     body: (AllComp) => <Respondbtn Complaints={AllComp} />
+  //   }
+  // ]
 
     
   return (
@@ -78,7 +88,7 @@ function ResToComp() {
           <table className="table table-hover">
               <thead className='table-success'>
                   <tr>
-                  <th scope="col" onClick={SortbyID} >Complaint ID#</th>
+                  <th scope="col" onClick={SortbyID}>Complaint ID#</th>
                   <th scope="col">Message from Complainant</th>
                   <th scope="col">Location of Complaint</th>
                   <th scope="col">Type of Complaint</th>
