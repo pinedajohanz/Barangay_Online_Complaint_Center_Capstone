@@ -5,9 +5,15 @@ import { Column } from "primereact/column";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
+import { FilterMatchMode } from "primereact/api"
+import { InputText } from "primereact/inputtext"
 import "../../dashboard/Dashboard.css"
 
 function ViewAllRes() {
+
+  const [filters, setFilters] = useState ({
+    global: { value: null, matchMode: FilterMatchMode.CONTAINS}
+  })
 
   const [AllRes, setAllRes] = useState([]);
   
@@ -41,7 +47,15 @@ function ViewAllRes() {
       <div class="h4 pb-2 mb-4 my-3 mx-3 text-success border-bottom border-success">
         Residents Information
       </div>
-        <DataTable value={AllRes} rowHover>
+
+      <InputText placeholder='Search' style={{width:500, marginLeft:15}}
+      onInput={(e) =>
+        setFilters({
+          global: { value: e.target.value, matchMode: FilterMatchMode.CONTAINS}
+        })
+      } />
+
+        <DataTable value={AllRes} rowHover filters={filters}>
           <Column field="resident_id" header={<p className=' text-success'>User ID</p>} sortable={true} />
           <Column field="first_name" header="First Name" sortable={true} />
           <Column field="middle_init" header="Middle Initial" sortable={true}/>
