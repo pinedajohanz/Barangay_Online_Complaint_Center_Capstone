@@ -8,27 +8,21 @@ import { Column } from "primereact/column";
 function ResToComp() {
   const [AllComp, setAllComp] = useState([]);
 
-  const [ids] = AllComp.map(complaints => complaints.complaints_id) // retrieves only 1 ID
-
-  const [status_info] = AllComp.map(complaints => complaints.status_msg)
-
   //const [complaints_id, message_comp, ...] = AllComp;
-  const [sorted, setSorted] = useState({ sorted: "id", reversed: false});
+  const [sorted, setSorted] = useState({ sorted: "", reversed: false});
 
-  //not working sort by ID
   const SortbyID = () => {
    setSorted({ sorted: "id", reversed: !sorted.reversed})
-     const idsCopy = [...ids];
+     const idsCopy = [...AllComp];
      idsCopy.sort((idsA, idsB ) => {
        if (sorted.reversed) {
-         return idsA.id - idsB.id
+         return idsA.complaints_id - idsB.complaints_id
        }
-       return idsB.id - idsA.id
+       return idsB.complaints_id - idsA.complaints_id
      });
      setAllComp(idsCopy)
    }
 
-   //working ang status sort but once lang nagana
    const SortbyStatus = () => {
     setSorted({ sorted: "status", reversed: !sorted.reversed});
     const AllCompCopy = [...AllComp];
@@ -37,7 +31,7 @@ function ResToComp() {
        const status_infoB = `${AllCompB.status_msg}`;
 
        if (sorted.reversed) {
-        status_infoB.localeCompare(status_infoA);
+        return status_infoB.localeCompare(status_infoA);
        }
        return status_infoA.localeCompare(status_infoB);
      });
