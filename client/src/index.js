@@ -27,6 +27,7 @@ import SeeResponse from './crud/user/SeeResponse';
 import ResToComp from './crud/admin/ResToComp';
 import ViewAllRes from './crud/admin/ViewAllRes';
 import UpdateDeleteStatus from './crud/admin/UpdateDeleteStatus';
+import ViewMyResponse from './crud/admin/ViewMyResponse';
 
 //  Sets up several routes that map to different pages and components in the application.
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -54,6 +55,7 @@ root.render(
                 <Route path="/ResToComp" element={<ResToComp />} />
                 <Route path="/UpdateDeleteStatus" element={<UpdateDeleteStatus />} />
                 <Route path="/ViewAllRes" element={<ViewAllRes />} />
+                <Route path="/ViewMyResponse" element={<ViewMyResponse />} />
             </Routes>
         </BrowserRouter>
   </React.StrictMode>

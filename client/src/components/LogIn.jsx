@@ -38,7 +38,7 @@ export const LogIn = ({ setAuth }) => {
             // checks if the username is 'admin' then redirects to admin dashboard if true
             switch(data.username) {
                 case 'admin':
-                    window.location = '/AdminDash';
+                    window.location = '/ViewMyResponse';
                      break;
                 default:
                     window.location = '/SeeResPersoInfo'; // old path /UserDash

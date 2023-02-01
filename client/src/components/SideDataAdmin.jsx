@@ -11,7 +11,7 @@ export const SideDataAdmin = [
     {
         title: "View Responses to Complaints",
         icon: <PageviewIcon />,
-        link: "/AdminDash" 
+        link: "/ViewMyResponse" 
     },
     {
         title: "Respond to Complaints",
