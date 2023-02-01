@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import "../../dashboard/Dashboard.css"
 import SideBarAdmin from "../../components/SideBarAdmin";
 import {FaArrowUp, FaArrowDown} from "react-icons/fa"
+import Viewbtn from '../Viewbtn';
 
 
 export default function ViewMyResponse() {
@@ -107,7 +108,7 @@ export default function ViewMyResponse() {
                 {/* maps over an array to display each item in a row from state */}
                 {AllComp.filter((Complaints)=> {
               // if search bar is empty then display all complaints
-              if (searchPhrase == "") {
+              if (searchPhrase === "") {
                 return Complaints
               } else if (`${Complaints.complaints_id} ${Complaints.type_of_complaint} ${Complaints.date_time} ${Complaints.first_name} ${Complaints.last_name} ${Complaints.status_msg} `.toLowerCase().includes(searchPhrase.toLowerCase())) {
                 return Complaints
@@ -120,9 +121,9 @@ export default function ViewMyResponse() {
                       <td>{Complaints.first_name} {Complaints.last_name}</td>
                       <td className="fw-bolder">{Complaints.status_msg}</td>
                       <td>
-                        
-                        {/* <Viewbtn Complaints={Complaints} /> */}
-                        
+                        <Viewbtn 
+                        Complaint={Complaints.complaints_id} 
+                        />
                       </td>
                   </tr>
                 )

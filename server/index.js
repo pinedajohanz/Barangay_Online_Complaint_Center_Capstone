@@ -203,11 +203,11 @@ app.get("/allComplaintstat/:status_info_id", auth, async (req, res) => {
     }
 }); 
 
-// API: View button [SEE MY COMPLAINTS SECTION] [USER SIDE]
+// API: View button [SEE MY COMPLAINTS SECTION & VIEW MY RESPONSES TO COMPLAINTS] [USER & ADMIN SIDE]
 app.get("/myResponse/:complaints_id", async (req, res) => {
     try {
         const { complaints_id } = req.params
-        const myResponse = await pool.query("SELECT responses.message_gov, responses.date_res FROM responses INNER JOIN complaints ON complaints.complaints_id = responses.complaints_id WHERE complaints.complaints_id = $1", 
+        const myResponse = await pool.query("SELECT responses.message_gov, responses.date_res FROM responses INNER JOIN complaints ON complaints.complaints_id = responses.complaints_id WHERE complaints.complaints_id = $1 ORDER BY date_res DESC", 
         [complaints_id])
 
         res.json(myResponse.rows)
