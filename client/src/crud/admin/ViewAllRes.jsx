@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import SideBarAdmin from "../../components/SideBarAdmin";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/themes/md-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import { FilterMatchMode } from "primereact/api"
@@ -10,6 +10,9 @@ import { InputText } from "primereact/inputtext"
 import "../../dashboard/Dashboard.css"
 
 function ViewAllRes() {
+
+  // retrieve user token from local storage
+  const token = localStorage.getItem('user.token') 
 
   const [filters, setFilters] = useState ({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS}
@@ -19,8 +22,11 @@ function ViewAllRes() {
   
   // get all residents information to display in the table
   async function getAllRes() {
-    const res = await fetch("http://localhost:5000/allresidents");
-
+    const res = await fetch("http://localhost:5000/allresidents",{
+      method: "GET",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`},
+      body: JSON.stringify()
+  });
     // data stored in this Array
     const AllResArray = await res.json();
 
@@ -43,8 +49,8 @@ function ViewAllRes() {
     <>
     <div className='main'>
       <SideBarAdmin />
-      <div className="container-table m-5 my-5 mx-5 text-bg-light">
-      <div class="h4 pb-2 mb-4 my-3 mx-3 text-success border-bottom border-success">
+      <div className="container-table my-5 mx-5 text-bg-light">
+      <div className="h4 pb-2 mb-4 my-3 mx-3 text-success border-bottom border-success">
         Residents Information
       </div>
 
@@ -56,10 +62,10 @@ function ViewAllRes() {
       } />
 
         <DataTable value={AllRes} rowHover filters={filters}>
-          <Column field="resident_id" header={<p className=' text-success'>User ID</p>} sortable={true} />
+          <Column field="resident_id" header="User ID" sortable={true} />
           <Column field="first_name" header="First Name" sortable={true} />
           <Column field="middle_init" header="Middle Initial" sortable={true}/>
-          <Column field="last_name" header={<p className=' text-success'>Last Name</p>} sortable={true}/>
+          <Column field="last_name" header="Last Name" sortable={true}/>
           <Column field="birthday" header="Birthday" sortable={true}/>
           <Column field="subdivision_address" header="Subdivision" sortable={true} />
           <Column field="house_street_address" header="House Street" sortable={true}/>
