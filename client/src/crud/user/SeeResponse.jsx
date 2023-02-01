@@ -6,12 +6,17 @@ import Viewbtn from "../Viewbtn"
 function SeeResponse() {
   const [MyComplaints, setMyComplaints] = useState([]);
   // retrieve resident_id from browser local storage
-  const resident_id = localStorage.getItem('user.resident_id') 
+  const resident_id = localStorage.getItem('user.resident_id')
+  // retrieve user token from local storage
+  const token = localStorage.getItem('user.token') 
   
   // GET the personal resident complaints to display
   async function getMyComplaints() {
-    const res = await fetch(`http://localhost:5000/myComplaints/${resident_id}`);
-
+    const res = await fetch(`http://localhost:5000/myComplaints/${resident_id}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`},
+      body: JSON.stringify()
+  });
     const MyComplaintsArray = await res.json();
     
     // converts date format to MM/DD/YYYY
