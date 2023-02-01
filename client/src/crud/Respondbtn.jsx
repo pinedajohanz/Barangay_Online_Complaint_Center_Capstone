@@ -8,12 +8,12 @@ function Respondbtn({ Complaints }) {
     const notify = () => {
         toast.success("Response Submitted!")
     }
+    // retrieve user token from local storage
+    const token = localStorage.getItem('user.token') 
 
     const [message_gov, setmessage_gov] = useState("");
-    // how to get complaints id ?
-    //console.log(Complaints) // retrieve object goods
     const { complaints_id } = Complaints
-    //console.log(complaints_id) // retrieve complaint ID# goods
+
 
     // reply function
     const reply = async (e) => {
@@ -25,7 +25,7 @@ function Respondbtn({ Complaints }) {
             console.log(body)
             const res = await fetch("http://localhost:5000/response", {
                 method: "POST",
-                headers: { "Content-Type": "application/json"},
+                headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`},
                 body: JSON.stringify(body)
             });
             // display notification that response is submitted
@@ -34,6 +34,7 @@ function Respondbtn({ Complaints }) {
 
         } catch (err) {
             console.error(err.message)
+            toast.warn("Expired Token")
         }
     }
 

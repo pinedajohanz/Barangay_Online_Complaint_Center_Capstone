@@ -8,6 +8,8 @@ function Updatebtn({ Complaints }) {
         toast.info("Status Updated!")
     }
 
+    const token = localStorage.getItem('user.token') 
+
     // editNum function
     const editNum = async (id) => {
         try {
@@ -18,14 +20,15 @@ function Updatebtn({ Complaints }) {
                 // put request to update it
                 method: "PUT",
                 // body of request is set as JSON
-                headers: { "Content-Type": "application/json"},
+                headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`},
                 // convert the JS object to a JSON string
                 body: JSON.stringify(body)
             });
             //notification for update status
             notify()
             
-            window.location = "/UpdateDeleteStatus"
+            setTimeout(() => {
+            window.location = "/UpdateDeleteStatus"}, 1500);
         } catch (err) {
             console.error(err.message)
         }
