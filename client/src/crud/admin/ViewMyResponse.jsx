@@ -79,62 +79,61 @@ export default function ViewMyResponse() {
 
     return (
         <>
-            <div className="main">
+          <div className="main">
             <SideBarAdmin />
                 <div className="container-main">
                 <div className="container text-bg-light my-5 mx-5">
-        <div className="h4 pb-2 mb-4 my-3 mx-3 text-success border-bottom border-success">
-            View My Responses to a Complaint
-        </div>
-        <div className="search-container">
-        <input 
-        type="text" 
-        placeholder="Search" 
-        onChange={event => {setSearchPhrase(event.target.value)}} 
-        />
-      </div> 
-            <table className="table table-hover">
-                <thead className='table-success'>
-                    <tr>
-                    <th scope="col" onClick={SortbyID}> <span style={{ marginRight:10 }}>Complaint ID# </span> {sorted.sorted === "id" ? renderArrow() : null}</th>
-                    <th className="text-center" scope="col">Type of Complaint</th>
-                    <th className="text-center" scope="col">Date & Time</th>
-                    <th className="text-center" scope="col">Name  </th>
-                    <th scope="col" onClick={SortbyStatus}> <span style={{ marginRight:10 }}> Status </span> {sorted.sorted === "status" ? renderArrow() : null}</th>
-                    <th className="text-center" scope="col">View My Responses</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {/* maps over an array to display each item in a row from state */}
-                {AllComp.filter((Complaints)=> {
-              // if search bar is empty then display all complaints
-              if (searchPhrase === "") {
-                return Complaints
-              } else if (`${Complaints.complaints_id} ${Complaints.type_of_complaint} ${Complaints.date_time} ${Complaints.first_name} ${Complaints.last_name} ${Complaints.status_msg} `.toLowerCase().includes(searchPhrase.toLowerCase())) {
-                return Complaints
-              }
-              }).map( Complaints => (
-                    <tr key={Complaints.complaints_id}>
-                      <td>{Complaints.complaints_id}</td>
-                      <td className="fw-semibold">{Complaints.type_of_complaint}</td>
-                      <td className="fw-semibold">{Complaints.date_time}</td>
-                      <td>{Complaints.first_name} {Complaints.last_name}</td>
-                      <td className="fw-bolder">{Complaints.status_msg}</td>
-                      <td>
-                        <Viewbtn 
-                        Complaint={Complaints.complaints_id} 
-                        />
-                      </td>
-                  </tr>
-                )
-                )
-                }
-                    
-                </tbody>
-            </table>
-        </div>
+                  <div className="h4 pb-2 mb-4 my-3 mx-3 text-success border-bottom border-success">
+                    View My Responses to a Complaint
+                  </div>
+                      <div className="search-container">
+                      <input 
+                      type="text" 
+                      placeholder="Search" 
+                      onChange={event => {setSearchPhrase(event.target.value)}} 
+                      />
+                      </div> 
+                  <table className="table table-hover">
+                      <thead className='table-success'>
+                          <tr>
+                          <th scope="col" onClick={SortbyID}> <span style={{ marginRight:10 }}>Complaint ID# </span> {sorted.sorted === "id" ? renderArrow() : null}</th>
+                          <th className="text-center" scope="col">Type of Complaint</th>
+                          <th className="text-center" scope="col">Date & Time</th>
+                          <th className="text-center" scope="col">Name  </th>
+                          <th scope="col" onClick={SortbyStatus}> <span style={{ marginRight:10 }}> Status </span> {sorted.sorted === "status" ? renderArrow() : null}</th>
+                          <th className="text-center" scope="col">View My Responses</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                      {/* maps over an array to display each item in a row from state */}
+                      {AllComp.filter((Complaints)=> {
+                    // if search bar is empty then display all complaints
+                    if (searchPhrase === "") {
+                      return Complaints
+                    } else if (`${Complaints.complaints_id} ${Complaints.type_of_complaint} ${Complaints.date_time} ${Complaints.first_name} ${Complaints.last_name} ${Complaints.status_msg} `.toLowerCase().includes(searchPhrase.toLowerCase())) {
+                      return Complaints
+                    }
+                    }).map( Complaints => (
+                          <tr key={Complaints.complaints_id}>
+                            <td>{Complaints.complaints_id}</td>
+                            <td className="fw-semibold">{Complaints.type_of_complaint}</td>
+                            <td className="fw-semibold">{Complaints.date_time}</td>
+                            <td>{Complaints.first_name} {Complaints.last_name}</td>
+                            <td className="fw-bolder">{Complaints.status_msg}</td>
+                            <td>
+                              <Viewbtn 
+                              Complaint={Complaints.complaints_id} 
+                              />
+                            </td>
+                        </tr>
+                      )
+                      )
+                      }
+                      </tbody>
+                  </table>
                 </div>
-            </div>
+              </div>
+          </div>
         </>
     )  
 }
