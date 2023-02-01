@@ -22,11 +22,9 @@ import {SignUp} from './components/SignUp'
 import UserDash from './dashboard/UserDash'
 import AdminDash from './dashboard/AdminDash'
 import SeeResPersoInfo from './crud/user/SeeResPersoInfo';
-import SeeMyComp from './crud/user/SeeMyComp';
 import FileComp from './crud/user/FileComp';
 import SeeResponse from './crud/user/SeeResponse';
 import ResToComp from './crud/admin/ResToComp';
-import UpDelPage from './crud/admin/UpdateDeleteStatus';
 import ViewAllRes from './crud/admin/ViewAllRes';
 import UpdateDeleteStatus from './crud/admin/UpdateDeleteStatus';
 

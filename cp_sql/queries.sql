@@ -19,6 +19,9 @@ INNER JOIN responses
 ON complaints.complaints_id = responses.complaints_id 
 WHERE complaints.resident_id = 19; --$1
 
+-- 3 tables joined residents table + complaints + status
+SELECT * FROM residents INNER JOIN Complaints ON residents.resident_id = complaints.resident_id INNER JOIN status_info  ON complaints.status_info_id = status_info.status_info_id ORDER BY date_time DESC;
+
 -- Update status_info_id to 0 or 1 integer
 UPDATE Complaints
 SET status_info_id = 1 -- $1
