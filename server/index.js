@@ -144,7 +144,7 @@ app.post("/complaints", auth, async (req, res) => {
 
 
 // BARANGAY RESPONSE TO A COMPLAINT (ADMIN SIDE) [RESPOND TO COMPLAINTS SECTION]
-app.post("/response", async (req, res) => {
+app.post("/response", auth, async (req, res) => {
     try {
         const { message_gov, complaints_id  } = req.body
         const response = await pool.query(
@@ -159,9 +159,9 @@ app.post("/response", async (req, res) => {
 
 // CAN BE APPLY IN [RESPOND TO COMPLAINTS SECTION] THEN RIGHT SIDE IS A BUTTON TO REPLY BACK TO A COMPLAINT
 // DISPLAY ALL complaints with status (ADMIN SIDE)
-app.get("/allcomplaints", async (req, res) => {
+app.get("/allcomplaints", auth, async (req, res) => {
     try {
-        const  allComplaints = await  pool.query('SELECT * FROM Complaints INNER JOIN status_info ON complaints.status_info_id = status_info.status_info_id ORDER BY status_msg DESC;');
+        const  allComplaints = await  pool.query('SELECT * FROM residents INNER JOIN Complaints ON residents.resident_id = complaints.resident_id INNER JOIN status_info  ON complaints.status_info_id = status_info.status_info_id ORDER BY date_time DESC;');
         res.json(allComplaints.rows)
     } catch (error) {
         console.error(err.message)
@@ -169,7 +169,7 @@ app.get("/allcomplaints", async (req, res) => {
 });
 
 // DISPLAY ALL residents info (ADMIN SIDE) [VIEW RESIDENTS INFO SECTION]
-app.get("/allresidents", async (req, res) => {
+app.get("/allresidents", auth, async (req, res) => {
      try {
  	    const  allResidents = await  pool.query('SELECT * FROM Residents ');
  	    res.json(allResidents.rows)
@@ -179,7 +179,7 @@ app.get("/allresidents", async (req, res) => {
 });
 
 // DISPLAY Personal info with their complaints (ADMIN SIDE)
-app.get("/allresidentscomp", async (req, res) => {
+app.get("/allresidentscomp", auth, async (req, res) => {
     try {
         const  allResidentscomp = await  pool.query(
             'SELECT residents.resident_id, first_name, middle_init, last_name, subdivision_address, house_street_address, complaints.complaints_id, message_comp, location_of_complaint, type_of_complaint, date_of_filing, time_of_filing FROM Residents INNER JOIN complaints ON residents.resident_id = complaints.resident_id');
@@ -190,7 +190,7 @@ app.get("/allresidentscomp", async (req, res) => {
 });
 
 // DISPLAY Complaints that are In Progress OR Completed status (ADMIN SIDE)
-app.get("/allComplaintstat/:status_info_id", async (req, res) => {
+app.get("/allComplaintstat/:status_info_id", auth, async (req, res) => {
     try {
         const { status_info_id } = req.params
         const  allComplaintstat = await  pool.query(
@@ -217,7 +217,7 @@ app.get("/myResponse/:complaints_id", async (req, res) => {
 })
 
 // DISPLAY OWN COMPLAINT WITH RESPONSE AND STATUS FROM THE BARANGAY (USER SIDE) [SEE MY COMPLAINT SECTION] 3 tables joined (complaints, residents, status)
-app.get("/myComplaints/:resident_id", async (req, res) => {
+app.get("/myComplaints/:resident_id", auth, async (req, res) => {
     try {
         const { resident_id } = req.params
         const myComplaints = await pool.query("SELECT complaints.resident_id, complaints.complaints_id, complaints.message_comp, status_info.status_msg FROM complaints INNER JOIN residents ON complaints.resident_id = residents.resident_id INNER JOIN status_info ON status_info.status_info_id = complaints.status_info_id WHERE complaints.resident_id = $1 ORDER BY status_msg ASC;", 
@@ -246,8 +246,8 @@ app.get("/myResidentComp/:resident_id", async (req, res) => {
 
 
 
-// DISPLAY a SPECIFIC resident personal info (PRIORITY: USER SIDE) [PROFILE]
-app.get("/allresidents/:resident_id", async (req, res) => {
+// DISPLAY a SPECIFIC resident personal info (USER SIDE) [PROFILE]
+app.get("/allresidents/:resident_id", auth, async (req, res) => {
     try {
         const { resident_id } = req.params
         const allresidents = await pool.query("SELECT * FROM Residents WHERE resident_id = $1", 
@@ -260,7 +260,7 @@ app.get("/allresidents/:resident_id", async (req, res) => {
 })
 
 // UPDATE a status of a complaint (ADMIN SIDE) [UPDATE STATUS/DELETE COMPLAINT SECTION]
-app.put("/updatecomp/:id", async (req, res) => {
+app.put("/updatecomp/:id", auth, async (req, res) => {
     try {
         const { id } = req.params
         const { status_info_id } = req.body
@@ -275,7 +275,7 @@ app.put("/updatecomp/:id", async (req, res) => {
 })
 
 // DELETE a complaint (ADMIN SIDE) [UPDATE STATUS/DELETE COMPLAINT SECTION]
-app.delete("/complaint/:id", async (req, res) => {
+app.delete("/complaint/:id", auth, async (req, res) => {
     try {
         const {id} = req.params
         const deleteComp = await pool.query(
