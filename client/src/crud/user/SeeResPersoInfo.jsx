@@ -5,14 +5,17 @@ import SidebarRes from "../../components/SidebarRes";
 function SeeResPersoInfo() {
   // get user's resident_id from local storage of browser 
   const resident_id = localStorage.getItem('user.resident_id')
-
+  const token = localStorage.getItem('user.token')
   // setting inputs by useState(Array) hook
   const [PersoInfo, setPersoInfo] = useState([]);
   
   async function getPersoInfo() {
     // API needs a resident_id to get the personal info of that user
-    const res = await fetch(`http://localhost:5000/allresidents/${resident_id}`);
-
+    const res = await fetch(`http://localhost:5000/allresidents/${resident_id}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`},
+      body: JSON.stringify()
+  });
     // API returns an array of personal information then saved 'PersoInfoArray'.
     const PersoInfoArray = await res.json();
 
