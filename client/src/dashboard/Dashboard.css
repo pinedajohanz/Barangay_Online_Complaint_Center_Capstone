@@ -146,3 +146,17 @@ body {
 .p-sortable-column {
     background-color: lightgreen;
 }
+
+.search-container {
+    margin: 1rem 0;
+    padding-left: 15px;
+    width: 45%;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    outline: none;
+    border: 1px solid #ccc
+}
