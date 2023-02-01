@@ -126,7 +126,7 @@ function ResToComp() {
                       <td className="fw-semibold">{Complaints.message_comp}</td>
                       <td>{Complaints.location_of_complaint}</td>
                       <td className="fw-semibold">{Complaints.type_of_complaint}</td>
-                      <td>{Complaints.date_time}</td>
+                      <td className='fw-semibold'>{Complaints.date_time}</td>
                       {/* <td>{Complaints.date_time}</td> */}
                       <td>{Complaints.first_name} {Complaints.last_name}</td>
                       <td className="fw-bolder">{Complaints.status_msg}</td>
