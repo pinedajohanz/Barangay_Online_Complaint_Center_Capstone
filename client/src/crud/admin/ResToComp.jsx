@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect } from 'react'
 import "../../dashboard/Dashboard.css"
 import SideBarAdmin from "../../components/SideBarAdmin";
 import Respondbtn from '../Respondbtn';
@@ -16,7 +16,7 @@ function ResToComp() {
   const token = localStorage.getItem('user.token') 
 
 
-  // SORTING NOT WORKING if may search function
+  
   // function for sorting by ID
   const SortbyID = () => {
    setSorted({ sorted: "id", reversed: !sorted.reversed})
@@ -30,7 +30,6 @@ function ResToComp() {
      setAllComp(idsCopy)
    }
 
-  // SORTING NOT WORKING if may search function
    // function for sorting by Status
    const SortbyStatus = () => {
     setSorted({ sorted: "status", reversed: !sorted.reversed});
@@ -106,10 +105,8 @@ function ResToComp() {
                   <th scope="col">Location of Complaint</th>
                   <th scope="col">Type of Complaint</th>
                   <th scope="col">Date & Time</th>
-                  {/* <th scope="col">Time(1 COLUMN NALANG)MERGE DATETIME COLUMN</th> */}
                   <th scope="col"> Name </th>
                   <th scope="col" onClick={SortbyStatus}> <span style={{ marginRight:10 }}> Status </span> {sorted.sorted === "status" ? renderArrow() : null}</th>
-                  {/* <th scope="col">0 = IN-PROGRESS / 1 = COMPLETED</th> */}
                   <th scope="col">Respond to Complaint</th>
 
                   </tr>
