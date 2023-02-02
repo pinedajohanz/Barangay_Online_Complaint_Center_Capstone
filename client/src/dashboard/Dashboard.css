@@ -53,8 +53,31 @@ body {
 .container-nav {
     border: 1px solid black;
     border-style: none;
-    padding-left: 100px;
-    padding-right: 100px;
+    /* padding-left: 100px;
+    padding-right: 100px; */
+}
+
+.nav-item {
+    padding-right: 20px;
+}
+
+
+.logo-img {
+    height: 70px;
+    width: auto;
+    opacity: 80%;
+    padding-left: 20px;
+}
+
+.logo-name {
+    font-size: 30px;
+    padding-left: 20px;
+    padding-top: 30px;
+    font-family: Arial black;
+}
+
+.nav-link {
+    font-size: 20px;
 }
 
 .container-table, .container {
@@ -62,6 +85,8 @@ body {
     border-radius: 10px;
     box-shadow: 5px 5px 5px 5px #ccc;
 }
+
+
 
 .sidebarresident, .sidebaradmin{
     /* position: fixed; */
@@ -120,24 +145,6 @@ body {
     border-radius: 4px;
     padding: 16px;
 }
-
-.logo-img {
-    height: 70px;
-    width: auto;
-    opacity: 80%;
-}
-
-.logo-name {
-    font-size: 30px;
-    padding-left: 20px;
-    padding-top: 30px;
-    font-family: Arial black;
-}
-
-.nav-link {
-    font-size: 20px;
-}
-
 
 .p-datatable-thead {
     background-color: green;
