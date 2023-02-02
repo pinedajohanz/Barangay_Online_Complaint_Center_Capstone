@@ -1,7 +1,9 @@
-import {Navbar, Nav, Container} from 'react-bootstrap';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import logocp from './logocp.jpg'
+import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
+import LoginIcon from '@mui/icons-material/Login';
+import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
+import PeopleIcon from '@mui/icons-material/People';
+import HomeIcon from '@mui/icons-material/Home';
 
 export const NavbarBootstrap = () => {
     return (
@@ -25,13 +27,19 @@ export const NavbarBootstrap = () => {
                 
                 <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li className="nav-item">
-                        <a className="nav-link" aria-current="page" href="/">Home</a>
+                        <a className="nav-link" aria-current="page" href="/"><HomeIcon /> Home</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="/about">About</a>
+                        <a className="nav-link" href="/about"><PeopleIcon /> About</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="/contact">Contact Us</a>
+                        <a className="nav-link" href="/contact"><ContactPhoneIcon />  Contact Us</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="/login"><LoginIcon />   Log In</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="/signup"><AppRegistrationIcon />   Sign Up </a>
                     </li>
                 </ul>
               </div>
