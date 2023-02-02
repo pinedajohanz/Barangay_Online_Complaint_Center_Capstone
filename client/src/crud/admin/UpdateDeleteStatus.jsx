@@ -22,6 +22,7 @@ function UpdateDeleteStatus() {
   // 
   const [sorted, setSorted] = useState({ sorted: "", reversed: false});
 
+
     // function for sorting by ID
     const SortbyID = () => {
       setSorted({ sorted: "id", reversed: !sorted.reversed})
@@ -55,6 +56,12 @@ function UpdateDeleteStatus() {
   // DELETE Complaint function
   async function deleteComp(id) {
     console.log(id)
+
+    if (!token) {
+      window.location.href = "/login";
+      return;
+    }
+
     try {
       await fetch(`http://localhost:5000/complaint/${id}`,
       {

@@ -38,6 +38,11 @@ function FileComp() {
             
             const token = localStorage.getItem('user.token')
 
+            if (!token) {
+                window.location.href = "/login";
+                return;
+              }
+
             const res = await fetch("http://localhost:5000/complaints", {
                 method: "POST",
                 headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`},

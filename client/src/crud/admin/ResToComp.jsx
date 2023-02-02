@@ -52,6 +52,12 @@ function ResToComp() {
   // re-use function (DISPLAY ALL COMPLAINTS) for See Responses to Complaints section (ADMIN)
   // GET all Complaints from Residents
   async function getAllComp() {
+
+    if (!token) {
+      window.location.href = "/login";
+      return;
+    }
+
     const res = await fetch("http://localhost:5000/allcomplaints", {
       method: "GET",
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`},

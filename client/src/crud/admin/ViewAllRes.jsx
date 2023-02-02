@@ -22,6 +22,11 @@ function ViewAllRes() {
   
   // get all residents information to display in the table
   async function getAllRes() {
+    if (!token) {
+      window.location.href = "/login";
+      return;
+    }
+    
     const res = await fetch("http://localhost:5000/allresidents",{
       method: "GET",
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`},

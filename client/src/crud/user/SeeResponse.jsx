@@ -12,6 +12,12 @@ function SeeResponse() {
   
   // GET the personal resident complaints to display
   async function getMyComplaints() {
+
+    if (!token) {
+      window.location.href = "/login";
+      return;
+    }
+
     const res = await fetch(`http://localhost:5000/myComplaints/${resident_id}`, {
       method: "GET",
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`},

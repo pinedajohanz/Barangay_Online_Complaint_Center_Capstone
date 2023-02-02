@@ -10,6 +10,12 @@ function SeeResPersoInfo() {
   const [PersoInfo, setPersoInfo] = useState([]);
   
   async function getPersoInfo() {
+
+    if (!token) {
+      window.location.href = "/login";
+      return;
+    }
+
     // API needs a resident_id to get the personal info of that user
     const res = await fetch(`http://localhost:5000/allresidents/${resident_id}`, {
       method: "GET",

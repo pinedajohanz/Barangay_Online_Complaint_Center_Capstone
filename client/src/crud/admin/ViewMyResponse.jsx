@@ -3,6 +3,7 @@ import "../../dashboard/Dashboard.css"
 import SideBarAdmin from "../../components/SideBarAdmin";
 import {FaArrowUp, FaArrowDown} from "react-icons/fa"
 import Viewbtn from '../Viewbtn';
+import ReactPaginate from 'react-paginate'
 
 
 export default function ViewMyResponse() {
@@ -16,37 +17,43 @@ export default function ViewMyResponse() {
     // retrieve user token from local storage
     const token = localStorage.getItem('user.token') 
 
-      // function for sorting by ID
-  const SortbyID = () => {
-    setSorted({ sorted: "id", reversed: !sorted.reversed})
-      const idsCopy = [...AllComp];
-      idsCopy.sort((idsA, idsB ) => {
-        if (sorted.reversed) {
-          return idsA.complaints_id - idsB.complaints_id
-        }
-        return idsB.complaints_id - idsA.complaints_id
-      });
-      setAllComp(idsCopy)
+    // function for sorting by ID
+    const SortbyID = () => {
+      setSorted({ sorted: "id", reversed: !sorted.reversed})
+        const idsCopy = [...AllComp];
+        idsCopy.sort((idsA, idsB ) => {
+          if (sorted.reversed) {
+            return idsA.complaints_id - idsB.complaints_id
+          }
+          return idsB.complaints_id - idsA.complaints_id
+        });
+        setAllComp(idsCopy)
+      }
+  
+      // function for sorting by Status
+      const SortbyStatus = () => {
+      setSorted({ sorted: "status", reversed: !sorted.reversed});
+      const AllCompCopy = [...AllComp];
+        AllCompCopy.sort((AllCompA, AllCompB ) => { 
+          const status_infoA = `${AllCompA.status_msg}`;
+          const status_infoB = `${AllCompB.status_msg}`;
+  
+          if (sorted.reversed) {
+          return status_infoB.localeCompare(status_infoA);
+          }
+          return status_infoA.localeCompare(status_infoB);
+        });
+        setAllComp(AllCompCopy)
     }
- 
-    // function for sorting by Status
-    const SortbyStatus = () => {
-     setSorted({ sorted: "status", reversed: !sorted.reversed});
-     const AllCompCopy = [...AllComp];
-      AllCompCopy.sort((AllCompA, AllCompB ) => { 
-        const status_infoA = `${AllCompA.status_msg}`;
-        const status_infoB = `${AllCompB.status_msg}`;
- 
-        if (sorted.reversed) {
-         return status_infoB.localeCompare(status_infoA);
-        }
-        return status_infoA.localeCompare(status_infoB);
-      });
-      setAllComp(AllCompCopy)
-   }
 
     // GET all Complaints from Residents
     async function getAllComp() {
+
+      if (!token) {
+        window.location.href = "/login";
+        return;
+      }
+      
         const res = await fetch("http://localhost:5000/allcomplaints", {
         method: "GET",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`},
