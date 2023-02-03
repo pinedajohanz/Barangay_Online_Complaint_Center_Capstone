@@ -27,19 +27,44 @@ export const NavbarBootstrap = () => {
                 
                 <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li className="nav-item">
-                        <a className="nav-link" aria-current="page" href="/"><HomeIcon /> Home</a>
+                        <a className="nav-link" aria-current="page" href="/">
+                        <div className='icon-text-container'>
+                          <div className='i'> <HomeIcon /> </div>
+                          <span>Home</span>
+                        </div>
+                        </a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="/about"><PeopleIcon /> About</a>
+                        <a className="nav-link" href="/about">
+                        <div className='icon-text-container'>
+                          <div className='i'> <PeopleIcon /> </div>
+                          <span>About</span> 
+                        </div>
+                        </a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="/contact"><ContactPhoneIcon />  Contact Us</a>
+                        <a className="nav-link" href="/contact">
+                        <div className='icon-text-container'>
+                          <div className='i'> <ContactPhoneIcon />  </div>
+                          <span>Contact Us</span> 
+                        </div>
+                        </a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="/login"><LoginIcon />   Log In</a>
+                        <a className="nav-link" href="/login">
+                        <div className='icon-text-container'>
+                          <div className='i'> <LoginIcon /> </div>
+                          <span> Log In</span>
+                        </div>
+                        </a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="/signup"><AppRegistrationIcon />   Sign Up </a>
+                        <a className="nav-link" href="/signup">
+                          <div className='icon-text-container'>
+                            <div className='i'> < AppRegistrationIcon /> </div>
+                            <span> Sign Up </span>
+                          </div>
+                          </a>
                     </li>
                 </ul>
               </div>
