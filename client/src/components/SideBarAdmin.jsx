@@ -42,7 +42,7 @@ const SideBarAdmin = () => {
                     })}
                     <div className='row' id='logout'>
                     <ExitToAppIcon />
-                    <button className='btn btn-dark' onClick={handleLogout}> Log out</button>
+                    <button id="button-logout" className='btn btn-dark' onClick={handleLogout}><ExitToAppIcon /> Log out</button>
                     </div>
                 </ul>
                 

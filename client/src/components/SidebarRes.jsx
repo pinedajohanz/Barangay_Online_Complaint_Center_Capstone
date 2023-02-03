@@ -41,7 +41,7 @@ const SidebarRes = () => {
                     })}
                     <div className='row' id='logout'>
                     <ExitToAppIcon />
-                    <button className='btn btn-dark' onClick={handleLogout}> Log out</button>
+                    <button className='btn btn-dark' onClick={handleLogout}><ExitToAppIcon /> Log out</button>
                     </div>
                 </ul>
             </div>
