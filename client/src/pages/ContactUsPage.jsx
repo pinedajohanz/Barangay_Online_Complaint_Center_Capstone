@@ -1,5 +1,6 @@
 import { NavbarBootstrap } from '../components/Navbarbs'
 import ContactImg from './contactImg.svg'
+import { Footer } from '../components/Footer';
 
 const ContactUsPage = () => {
   return (
@@ -26,6 +27,7 @@ const ContactUsPage = () => {
             </div>
         </div>
     </section>
+    <Footer />
     </>
   );
 }

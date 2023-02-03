@@ -1,6 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import forlandpage from './forlandpage.svg';
+import { Footer } from './Footer';
 
 function LandPage() {
   return (
@@ -30,6 +31,7 @@ function LandPage() {
             </div>
         </div>
     </section>
+    <Footer />
     {/* <Container fluid>
         <Card border="dark" classNameName="text-center">
         <Card.Header><h1>WELCOME TO BARANGAY ONLINE COMPLAINT CENTER</h1></Card.Header>
