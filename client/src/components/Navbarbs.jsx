@@ -58,9 +58,9 @@ export const NavbarBootstrap = () => {
                         </div>
                         </a>
                     </li>
-                    <li className="nav-item">
+                    <li id="signup-nav" className="nav-item">
                         <a className="nav-link" href="/signup">
-                          <div className='icon-text-container'>
+                          <div className='icon-text-container' >
                             <div className='i'> < AppRegistrationIcon /> </div>
                             <span> Sign Up </span>
                           </div>
