@@ -22,8 +22,9 @@ app.use(express.json()) //req.body
 
 // [SIGN UP PAGE]
 app.post("/signup", async (req, res) => {
-    try {
 
+    try {
+        
          //take the username and password from the req.body
         const { 
             first_name,
@@ -38,11 +39,12 @@ app.post("/signup", async (req, res) => {
             password } = req.body
         
 
-
+            
         //Check if the user is already existing
         const user = await pool.query(`SELECT * FROM Residents WHERE
         username = $1`, [username])
 
+        
         if (user.rows.length > 0) {
             res.status(401).send("User already exists")
         }
@@ -58,6 +60,7 @@ app.post("/signup", async (req, res) => {
             `INSERT INTO Residents (uuid, first_name, middle_init, last_name, birthday, subdivision_address, house_street_address, contact_number, email_address, username, password) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING * `, 
             [uuidv4(), first_name, middle_init, last_name, birthday, subdivision_address, house_street_address, contact_number, email_address, username, hash])
 
+           
         //generate and return the JWT token
         const token = generateJWT(newResidents.rows[0])
 

@@ -3,44 +3,65 @@ import { Link } from "react-router-dom";
 import {NavbarBootstrap} from "./Navbarbs";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup'
 import axios from "axios";
+import * as yup from 'yup';
+import { Formik } from 'formik';
 
 export const SignUp = ( {setAuth} ) => {
     // setFormData assigns a value from input of user
-    const [formData, setFormData] = useState({
-        first_name: "",
-        middle_init: "",
-        last_name: "",
-        birthday: "",
-        subdivision_address: "",
-        house_street_address: "",
-        contact_number: "",
-        email_address: "",
-        username: "",
-        password: ""
+    // const [formData, setFormData] = useState({
+    //     first_name: "",
+    //     middle_init: "",
+    //     last_name: "",
+    //     birthday: "",
+    //     subdivision_address: "",
+    //     house_street_address: "",
+    //     contact_number: "",
+    //     email_address: "",
+    //     username: "",
+    //     password: ""
+    // })
+
+    const schema = yup.object().shape({
+        first_name: yup.string().min(2, "Minimum of 2 characters").max(20, "Maximum of 20 characters").required("First name is required"),
+        middle_init: yup.string().max(2, "Maximum of 2 characters").required("Middle initial is required"),
+        last_name: yup.string().min(2, "Minimum of 2 characters").max(20, "Maximum of 20 characters").required("Last name is required"),
+        birthday: yup.date().required("Birthday is required"),
+        subdivision_address: yup.string().required("Subdivision is required"),
+        house_street_address: yup.string().required("House street is required"),
+        contact_number: yup.string().matches(/^\d{10}$/, 'Contact number must be 11 digits').required("Contact number is required"),
+        email_address: yup.string().email("Invalid email address").required("Email is required"),
+        username: yup.string().min(4, "Minimum of 4 characters").max(20, "Maximum of 20 characters").required("Username is required"),
+        password: yup.string().min(5, "Password must be at least 5 characters").max(25, "Maximum of 25 characters").required("Password is required")
     })
 
+    
     //setting the inputs
-    const onChange = (e) => {    //username     : testusername   
-        setFormData({ ...formData, [e.target.name]: e.target.value })
-    }
+    // const onChange = (e) => {    //username     : testusername   
+    //     setFormData({ ...formData, [e.target.name]: e.target.value })
+    // }
 
-    const onSubmitForm = async (e) => {
-        e.preventDefault()
-        
+    const handleSubmitForm = async (values, { setSubmitting, setErrors }) => {
         try {
+            // e.preventDefault()
             //fetch api for POST method
-            axios.post("http://localhost:5000/signup", formData
-            )
+            const res = await axios.post("http://localhost:5000/signup", values)
             // // response from server is stored in 'res'
-            .then(res => {
+            // .then(res => {
                 // if we got a 200 status it will redirect to Log In page
                 if(res.status === 200){
-                    window.location = '/login'    
-                }
-            })
+                    setTimeout(() => {
+                        window.location = '/login'
+                    }, 1500); // delay of 1.5 seconds
+            } else {
+                setErrors({ server: 'Something went wrong, please try again later.' });
+            }
+            
         } catch (error) {
-            console.log(error.message)
+            setErrors({ server: error.message });
+        } finally {
+        setSubmitting(false);
         }
     };
 
@@ -48,69 +69,189 @@ export const SignUp = ( {setAuth} ) => {
         <> 
         <NavbarBootstrap />
         <div className="form-box d-flex mx-auto my-5 align-items-center justify-content-center shadow-lg">
-            <Form onSubmit={onSubmitForm} className="needs-validation">
-            <h2 className="text-center">Sign Up</h2>
-                <Form.Group className="mb-3 was-validated" controlId="formfirst_name">
-                    <Form.Label column sm>First name</Form.Label>
-                            <Form.Control name="first_name" value={formData.first_name} onChange={onChange} type="text" placeholder="Johanz" required />
-                            <div className="invalid-feedback"> Please Enter your first name </div>
-                </Form.Group>
-                <Form.Group className="mb-3 was-validated" controlId="formMiddle_init">
-                    <Form.Label column sm>Middle initial</Form.Label>
-                            <Form.Control name="middle_init" value={formData.middle_init} onChange={onChange} type="text" placeholder="B." required />
-                            <div className="invalid-feedback"> Please Enter your middle initial </div>
-                </Form.Group>
-                <Form.Group className="mb-3 was-validated" controlId="formlast_name">
-                    <Form.Label column sm>Last name</Form.Label>
-                            <Form.Control name="last_name" value={formData.last_name} onChange={onChange} type="text" placeholder="Pineda" required/>
-                            <div className="invalid-feedback"> Please Enter your last name </div>
-                </Form.Group>
-                <Form.Group className="mb-3 was-validated" controlId="formbirthday">
-                    <Form.Label column sm={2}>Birthday</Form.Label>
-                            <Form.Control name="birthday" value={formData.birthday} onChange={onChange} type="date" placeholder="DD/MM/YYYY" required />
-                            <div className="invalid-feedback"> Please Enter your Birthday </div>
-                </Form.Group>
-                <Form.Group className="mb-3 was-validated" controlId="formsubdivision_address">
-                    <Form.Label column sm={2}>Subdivision</Form.Label>
-                            <Form.Control name="subdivision_address" value={formData.subdivision_address} onChange={onChange} type="text" placeholder="Westlake subdivision" required/>
-                            <div className="invalid-feedback"> Please Enter your Subdivision </div>
-                </Form.Group>
-                <Form.Group className="mb-3 was-validated" controlId="formhouse_street_address">
-                    <Form.Label column sm>House Street</Form.Label>
-                            <Form.Control name="house_street_address" value={formData.house_street_address} onChange={onChange} type="text" placeholder="North street" required/>
-                            <div className="invalid-feedback"> Please Enter your House street </div>
-                </Form.Group>
-                <Form.Group className="mb-3 was-validated" controlId="formcontact_number">
-                    <Form.Label column sm>Contact Number</Form.Label>
-                            <Form.Control name="contact_number" value={formData.contact_number} onChange={onChange} type="number" placeholder="09975113834" required/>
-                            <div className="invalid-feedback"> Please Enter your contact number </div>
-                </Form.Group>
-                <Form.Group className="mb-3 was-validated" controlId="formemail_address">
-                    <Form.Label column sm={2}>Email</Form.Label>
-                            <Form.Control name="email_address" value={formData.email_address} onChange={onChange} type="email_address" placeholder="youremail@gmail.com" required/>
-                            <div className="invalid-feedback"> Please Enter your Email </div>
-                </Form.Group>
-                <Form.Group className="mb-3 was-validated" controlId="formUsername">
-                    <Form.Label column sm={2}>Username</Form.Label>
-                            <Form.Control name="username" value={formData.username} onChange={onChange} type="username" placeholder="(ex. Johanz23)" required/>
-                            <div className="invalid-feedback"> Please Enter your username </div>
-                </Form.Group>
-                <Form.Group className="mb-3 was-validated" controlId="formPassword">
-                    <Form.Label column sm={2}>Password</Form.Label>
-                            <Form.Control name="password" value={formData.password} onChange={onChange} type="password" placeholder="***********" required/>
-                            <div className="invalid-feedback"> Please Enter your password </div>
-                </Form.Group>
-                <Button className="btn btn-primary block w-100" variant="primary" type="submit">
-                    Submit
-                </Button>
-                {/* redirect to Log In page */}
-                <Link to="/login">
-                    <button className="btn btn-success my-3 block w-100">
-                       Already have an account? Log in here!
-                    </button>
-                </Link>
-            </Form>
-
+            <Formik
+            validationSchema={schema}
+            initialValues={{
+                first_name: "",
+                middle_init: "",
+                last_name: "",
+                birthday: "",
+                subdivision_address: "",
+                house_street_address: "",
+                contact_number: "",
+                email_address: "",
+                username: "",
+                password: ""
+            }}
+            onSubmit={handleSubmitForm}
+            >
+                {({ isSubmitting, handleSubmit, handleChange, values, touched, errors }) => (
+                    <Form noValidate onSubmit={handleSubmit} >
+                    <h2 className="text-center">Sign Up</h2>
+                        <Form.Group className="mb-3" controlId="formfirst_name">
+                            <Form.Label column sm>First name</Form.Label>
+                                    <Form.Control 
+                                    name="first_name" 
+                                    value={values.first_name} 
+                                    onChange={handleChange} 
+                                    isInvalid={!!errors.first_name}
+                                    isValid={touched.first_name && !errors.first_name}
+                                    type="text" 
+                                    placeholder="Johanz Robert" 
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        {errors.first_name}
+                                    </Form.Control.Feedback>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formMiddle_init">
+                            <Form.Label column sm>Middle initial</Form.Label>
+                                    <Form.Control 
+                                    name="middle_init" 
+                                    value={values.middle_init} 
+                                    onChange={handleChange} 
+                                    isInvalid={!!errors.middle_init}
+                                    isValid={touched.middle_init && !errors.middle_init}
+                                    type="text" 
+                                    placeholder="B." 
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        {errors.middle_init}
+                                    </Form.Control.Feedback>
+                                    
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formlast_name">
+                            <Form.Label column sm>Last name</Form.Label>
+                                    <Form.Control 
+                                    name="last_name" 
+                                    value={values.last_name} 
+                                    onChange={handleChange} 
+                                    isInvalid={!!errors.last_name}
+                                    isValid={touched.last_name && !errors.last_name}
+                                    type="text" 
+                                    placeholder="Pineda" 
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        {errors.last_name}
+                                    </Form.Control.Feedback>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formbirthday">
+                            <Form.Label column sm={2}>Birthday</Form.Label>
+                                    <Form.Control 
+                                    name="birthday" 
+                                    value={values.birthday} 
+                                    onChange={handleChange} 
+                                    isInvalid={!!errors.birthday}
+                                    isValid={touched.birthday && !errors.birthday}
+                                    type="date" 
+                                    placeholder="DD/MM/YYYY"  
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        {errors.birthday}
+                                    </Form.Control.Feedback>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formsubdivision_address">
+                            <Form.Label column sm={2}>Subdivision</Form.Label>
+                                    <Form.Control 
+                                    name="subdivision_address" 
+                                    value={values.subdivision_address} 
+                                    onChange={handleChange} 
+                                    isInvalid={!!errors.subdivision_address}
+                                    isValid={touched.subdivision_address && !errors.subdivision_address}
+                                    type="text" 
+                                    placeholder="Westlake subdivision" 
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        {errors.subdivision_address}
+                                    </Form.Control.Feedback>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formhouse_street_address">
+                            <Form.Label column sm>House Street</Form.Label>
+                                    <Form.Control 
+                                    name="house_street_address" 
+                                    value={values.house_street_address} 
+                                    onChange={handleChange} 
+                                    isInvalid={!!errors.house_street_address}
+                                    isValid={touched.house_street_address && !errors.house_street_address}
+                                    type="text" 
+                                    placeholder="North street"
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        {errors.house_street_address}
+                                    </Form.Control.Feedback>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formcontact_number">
+                            <Form.Label column sm>Contact Number</Form.Label>
+                                    <Form.Control name="contact_number" 
+                                    value={values.contact_number} 
+                                    onChange={handleChange} 
+                                    isInvalid={!!errors.contact_number}
+                                    isValid={touched.contact_number && !errors.contact_number}
+                                    type="number" 
+                                    placeholder="09975113834" 
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        {errors.contact_number}
+                                    </Form.Control.Feedback>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formemail_address">
+                            <Form.Label column sm={2}>Email</Form.Label>
+                                    <Form.Control 
+                                    name="email_address" 
+                                    value={values.email_address} 
+                                    onChange={handleChange} 
+                                    isInvalid={!!errors.email_address}
+                                    isValid={touched.email_address && !errors.email_address}
+                                    type="email_address" 
+                                    placeholder="youremail@gmail.com" 
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        {errors.email_address}
+                                    </Form.Control.Feedback>
+                        </Form.Group>
+                        <Form.Group className="mb-3 " controlId="formUsername">
+                            <Form.Label column sm={2}>Username</Form.Label>
+                            <InputGroup hasValidation>
+                                    <Form.Control 
+                                    name="username" 
+                                    value={values.username} 
+                                    onChange={handleChange} 
+                                    isInvalid={!!errors.username}
+                                    isValid={touched.username && !errors.username}
+                                    type="username" 
+                                    placeholder="(ex. Johanz23)" 
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                    {errors.username}
+                                    </Form.Control.Feedback>
+                            </InputGroup>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formPassword">
+                            <Form.Label column sm={2}>Password</Form.Label>
+                                    <Form.Control name="password" 
+                                    value={values.password}
+                                    onChange={handleChange} 
+                                    isInvalid={!!errors.password}
+                                    isValid={touched.password && !errors.password}
+                                    type="password" 
+                                    placeholder="***********" 
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        {errors.password}
+                                    </Form.Control.Feedback>
+                        </Form.Group>
+                        <Button className="btn btn-primary block w-100" variant="primary" type="submit" disabled={isSubmitting}>
+                            Submit
+                        </Button>
+                        {/* redirect to Log In page */}
+                        <Link to="/login">
+                            <button className="btn btn-success my-3 block w-100">
+                               Already have an account? Log in here!
+                            </button>
+                        </Link>
+                    </Form>
+                )}
+            
+            </Formik>
         </div>
         </>
     )
