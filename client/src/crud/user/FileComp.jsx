@@ -70,11 +70,6 @@ function FileComp() {
             <input className="form-control my-3" type="text" placeholder="Barangay Molino 4" value={location_of_complaint} onChange={e => setlocation_of_complaint(e.target.value)} required/>
             <label className="fs-4">Type of Complaint:</label>
             <input className="form-control my-3" type="text" placeholder="Type of Complaint (Road Issue, Drainage Issue)" value={type_of_complaint} onChange={e => settype_of_complaint(e.target.value)} required />
-            {/* <label className="fs-4">Upon submit form current_timedate() then 1 column only at db DATETIME TYPE </label>
-            <input className="form-control my-3" type="date" placeholder='Date of Filing (DD/MM/YYYY)' value={date_of_filing} onChange={e => setdate_of_filing(e.target.value)} required />
-            <label className="fs-4">Upon submit form current_timedate() then 1 column only at db DATETIME TYPE </label>
-            <input className="form-control my-3" type="time" placeholder="Military time (14:00)" value={time_of_filing} onChange={e => settime_of_filing(e.target.value)} required /> */}
-            {/* Edit: User na naka log in dapat naka-assign automatic sa resident ID below */}
             <label className="fs-5">User ID# (AUTO GENERATED)</label>
             <input className="form-control my-3" type="number" placeholder="RESIDENT ID" value={resident_id} aria-label="Disabled input example" disabled />
             
