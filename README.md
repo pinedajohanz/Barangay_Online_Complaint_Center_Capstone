@@ -1,7 +1,7 @@
 
 # Barangay Online Complaint Center
 
-An online web application that allows residents to file complaints and the barangay to respond and manage the complaint status.
+An online web application that allows residents to file complaints and the barangay to respond and manage the complaints and their status.
 
 ## Who is this for?
 This project is for barangays in the Philippines and their residents who want to file and track complaints in a convenient and accessible manner.
