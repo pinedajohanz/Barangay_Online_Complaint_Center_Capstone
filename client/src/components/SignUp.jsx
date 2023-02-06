@@ -7,8 +7,20 @@ import InputGroup from 'react-bootstrap/InputGroup'
 import axios from "axios";
 import * as yup from 'yup';
 import { Formik } from 'formik';
+import { ToastContainer, toast, Flip } from 'react-toastify'; 
 
 export const SignUp = ( {setAuth} ) => {
+
+    const notifyCreate = () => {
+        toast.success("Account Created!")
+    }
+    const notifyRedirect = () => {
+        toast.info("Redirecting to Log In Page")
+    }
+
+    const notifyError = () => {
+        toast.danger("Something went wrong")
+    }
     // setFormData assigns a value from input of user
     // const [formData, setFormData] = useState({
     //     first_name: "",
@@ -51,10 +63,13 @@ export const SignUp = ( {setAuth} ) => {
             // .then(res => {
                 // if we got a 200 status it will redirect to Log In page
                 if(res.status === 200){
+                    notifyCreate()
+                    notifyRedirect()
                     setTimeout(() => {
                         window.location = '/login'
-                    }, 1500); // delay of 1.5 seconds
+                    }, 2000); // delay of 2 seconds
             } else {
+                notifyError()
                 setErrors({ server: 'Something went wrong, please try again later.' });
             }
             
@@ -252,6 +267,18 @@ export const SignUp = ( {setAuth} ) => {
                 )}
             
             </Formik>
+            <ToastContainer
+            position="top-right"
+            autoClose={9000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored" 
+            transition={Flip}  />
         </div>
         </>
     )
