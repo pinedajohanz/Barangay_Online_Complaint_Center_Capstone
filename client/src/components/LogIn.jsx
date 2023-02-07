@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import {NavbarBootstrap} from "./Navbarbs"
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
+import InputGroup from 'react-bootstrap/InputGroup'
 import axios from "axios";
+import { Formik } from 'formik';
+import * as yup from 'yup';
 import { ToastContainer, toast, Flip } from 'react-toastify'; 
 
 export const LogIn = ({ setAuth }) => {
@@ -17,32 +20,37 @@ export const LogIn = ({ setAuth }) => {
         toast.info("Redirecting to Admin Page")
     }
     const notifyError = () => {
-        toast.warning("Invalid Credentials")
+        toast.error("Invalid Credentials")
     }
+
+    const validationSchema = yup.object().shape({
+        username: yup.string().min(4, "Minimum of 4 characters").max(20, "Maximum of 20 characters").required("Username is required"),
+        password: yup.string().min(5, "Password must be at least 5 characters").max(25, "Maximum of 25 characters").required("Password is required")
+      });
     // const [state, setState] = useState('initial/default value')
     // useState('initial value')
     // setState <- this update the state
-    const [formData, setFormData] = useState({
-        username: "",
-        password: ""
-    })
+    // const [formData, setFormData] = useState({
+    //     username: "",
+    //     password: ""
+    // })
     
      //setting the inputs
-    const onChange = (e) => {    //username     : testusername   
-        setFormData({ ...formData, [e.target.name]: e.target.value })
-    }
+    // const onChange = (e) => {    //username     : testusername   
+    //     setFormData({ ...formData, [e.target.name]: e.target.value })
+    // }
     // onSubmit form function for Log In authentication
-    const onSubmitForm = async (e) => {
-        e.preventDefault()
+    const onSubmitForm = async (values, { setSubmitting, setErrors }) => {
+        // e.preventDefault()
         
     try {
         //fetch api for POST method
         // after it fetch the data from API, data is stored in 'formData' 
-        axios.post("http://localhost:5000/login", formData
-        )
+        const res = await axios.post("http://localhost:5000/login", values)
         
         // response from server is stored in 'res'
-        .then(res => {
+        // .then(res => {
+            if(res.status === 200){
             // data within that response is stored in the variable "data"
             const data = res.data
             // resident_id will be stored in local storage browser
@@ -64,14 +72,20 @@ export const LogIn = ({ setAuth }) => {
                         window.location = '/SeeResPersoInfo'
                     }, 2500); // delay of 2.5 seconds
                     break 
-            }
-        })
-        .catch(error => {
-            console.log(error.message)
+            } 
+        } else {
             notifyError()
-        });
+            setErrors({ server: 'Something went wrong, please try again later.' });
+        }
+        // .catch(error => {
+        //     console.log(error.message)
+        //     notifyError()
+        // });
         } catch (error) {
-            console.log(error.message)
+            notifyError()
+            setErrors({ server: error.message });
+        } finally {
+        setSubmitting(false);
         }
     }
 
@@ -79,30 +93,59 @@ export const LogIn = ({ setAuth }) => {
         <> 
         <NavbarBootstrap />
         <div className="form-box d-flex mx-auto my-5 align-items-center justify-content-center shadow-lg">
-        
-            <Form onSubmit={onSubmitForm} className="needs-validation">
+        <Formik 
+        validationSchema={validationSchema}
+        initialValues={{ username: '', password: '' }} 
+        onSubmit={onSubmitForm}
+        >   
+            {({  isSubmitting, handleSubmit, handleChange, values, touched, errors  }) => (
+            <Form noValidate onSubmit={handleSubmit}>
                 <h2 className="text-center">Log In</h2>
                 <hr />
-                <Form.Group className="mb-2 was-validated" controlId="formUsername">
-                    <Form.Label column sm={2}>Username</Form.Label>
-                            <Form.Control name="username" value={formData.username} onChange={onChange} type="text" placeholder="Enter username here" required />
-                            <div className="invalid-feedback"> Please Enter your username </div>
-                </Form.Group>
-                <Form.Group className="mb-2 was-validated" controlId="formPassword">
-                    <Form.Label column sm={2}>Password</Form.Label>
-                            <Form.Control name="password" value={formData.password} onChange={onChange} type="password" placeholder="***********" required />
-                            <div className="invalid-feedback"> Please Enter your password </div>
-                </Form.Group>
-                <Button className="block w-100" variant="primary" type="submit" >
+                <Form.Group className="mb-3 " controlId="formUsername">
+                            <Form.Label column sm={2}>Username</Form.Label>
+                            <InputGroup hasValidation>
+                                    <Form.Control 
+                                    name="username" 
+                                    value={values.username} 
+                                    onChange={handleChange} 
+                                    isInvalid={!!errors.username}
+                                    isValid={touched.username && !errors.username}
+                                    type="username" 
+                                    placeholder="(ex. Johanz23)" 
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                    {errors.username}
+                                    </Form.Control.Feedback>
+                            </InputGroup>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formPassword">
+                            <Form.Label column sm={2}>Password</Form.Label>
+                                    <Form.Control name="password" 
+                                    value={values.password}
+                                    onChange={handleChange} 
+                                    isInvalid={!!errors.password}
+                                    isValid={touched.password && !errors.password}
+                                    type="password" 
+                                    placeholder="***********" 
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        {errors.password}
+                                    </Form.Control.Feedback>
+                        </Form.Group>
+                <Button className="block w-100" variant="primary" type="submit" disabled={isSubmitting}>
                     Log in
                 </Button>
                 {/* redirect to Sign Up page */}
+                <hr />
                 <Link to="/signup">
-                    <button className="btn btn-success my-3 block w-100"> 
+                    <button className="btn btn-info my-1 block w-100"> 
                     Don't have an account yet? Sign Up here!
                     </button>  
                 </Link>
             </Form>
+            )}
+        </Formik>
             <ToastContainer
             position="top-right"
             autoClose={9000}
