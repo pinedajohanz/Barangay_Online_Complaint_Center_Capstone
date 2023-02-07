@@ -2,12 +2,13 @@ import React from 'react'
 import {NavbarBootstrap} from "../components/Navbarbs";
 import Accordion from 'react-bootstrap/Accordion';
 import faq_img from './faq_img.svg'
+import { Footer } from '../components/Footer';
 
 const FAQs = () => {
   return (
     <>
     <NavbarBootstrap />
-    <section className='faq-section'>
+    <section className='faq-section m-4 py-3'>
       <h1 className='my-5 text-center'>Frequently Asked Questions</h1>
       <div className='container-faq'>
         <div className='row mx-3'>
@@ -61,7 +62,7 @@ const FAQs = () => {
         </div>
       </div>
     </section>
-    
+    <Footer />
     </>
   )
 }

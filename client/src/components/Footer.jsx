@@ -14,10 +14,12 @@ export const Footer = () => {
                         {/* <!-- content --> */}
                         <h6 className="text-uppercase fw-bold mb-4">
                             <i className="fas fa-gem me-3 text-secondary"></i>
-                            iSumBongMo! Philippines
+                            iSumBongMo! 
 
                         </h6>
-                        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, amet. Nobis voluptatibus omnis aperiam impedit.</p>
+                        <p> 
+                            An online web application that allows residents to file complaints and the barangay to respond and manage the complaint status. 
+                        </p>
                     </div>
                     {/* <!-- grid column --> */}
                     
