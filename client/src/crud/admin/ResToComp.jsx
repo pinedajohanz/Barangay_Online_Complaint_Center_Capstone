@@ -106,7 +106,7 @@ function ResToComp() {
           <table className="table table-hover">
               <thead className='table-success'>
                   <tr>
-                  <th scope="col" onClick={SortbyID}> <span style={{ marginRight:10 }}>Complaint ID# </span> {renderArrow()}</th>
+                  <th scope="col" onClick={SortbyID}> <span style={{ marginRight:5 }}>Complaint ID# </span> {renderArrow()}</th>
                   <th scope="col">Message from Complainant</th>
                   <th scope="col">Location of Complaint</th>
                   <th scope="col">Type of Complaint</th>
