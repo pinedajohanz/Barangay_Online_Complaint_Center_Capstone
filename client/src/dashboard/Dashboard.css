@@ -160,6 +160,10 @@ i {
     height: 0px;
     
 }
+.form-box {
+    border: 1px solid cyan;
+    border-radius: 10px;
+}
 
 .form-border {
     border: 4px solid black;

@@ -103,6 +103,7 @@ export const SignUp = ( {setAuth} ) => {
                 {({ isSubmitting, handleSubmit, handleChange, values, touched, errors }) => (
                     <Form noValidate onSubmit={handleSubmit} >
                     <h2 className="text-center">Sign Up</h2>
+                    <hr />
                         <Form.Group className="mb-3" controlId="formfirst_name">
                             <Form.Label column sm>First name</Form.Label>
                                     <Form.Control 
