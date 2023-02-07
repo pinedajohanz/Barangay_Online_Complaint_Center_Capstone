@@ -10,7 +10,7 @@ function LandPage() {
 <section className="bg-dark text-light p-5 text-center text-sm-start my-5">
         <div className="container-landpage">
             <div className="row d-sm-flex align-items-center justify-content-between">
-                <div className="col-6 align-items-center">
+                <div className="col-md-6 align-items-center">
                     <h1>MAY <span className="text-warning">REKLAMO</span> KA BA SA IYONG LUGAR?</h1>
                     <p className="lead my-4">
                         May Problema? May Issue sa lugar niyo o ibang issue na pwede makatulong ang barangay? Ireport na dito sa ating online complaint center para matugunan agad!
