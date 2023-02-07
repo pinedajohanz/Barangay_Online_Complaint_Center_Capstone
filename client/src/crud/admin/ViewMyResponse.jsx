@@ -103,11 +103,11 @@ export default function ViewMyResponse() {
                   <table className="table table-hover">
                       <thead className='table-success'>
                           <tr>
-                          <th scope="col" onClick={SortbyID}> <span style={{ marginRight:10 }}>Complaint ID# </span> {sorted.sorted === "id" ? renderArrow() : null}</th>
+                          <th scope="col" onClick={SortbyID}> <span style={{ marginRight:10 }}>Complaint ID# </span> {renderArrow()}</th>
                           <th className="text-center" scope="col">Type of Complaint</th>
                           <th className="text-center" scope="col">Date & Time</th>
                           <th className="text-center" scope="col">Name  </th>
-                          <th scope="col" onClick={SortbyStatus}> <span style={{ marginRight:10 }}> Status </span> {sorted.sorted === "status" ? renderArrow() : null}</th>
+                          <th scope="col" onClick={SortbyStatus}> <span style={{ marginRight:10 }}> Status </span> {renderArrow()}</th>
                           <th className="text-center" scope="col">View My Responses</th>
                           </tr>
                       </thead>
