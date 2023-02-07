@@ -4,8 +4,21 @@ import {NavbarBootstrap} from "./Navbarbs"
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import axios from "axios";
+import { ToastContainer, toast, Flip } from 'react-toastify'; 
 
 export const LogIn = ({ setAuth }) => {
+    const notifyLogIn = () => {
+        toast.success("Log in Credentials Accepted!")
+    }
+    const notifyResidentPage = () => {
+        toast.info("Redirecting to Resident Page")
+    }
+    const notifyAdminPage = () => {
+        toast.info("Redirecting to Admin Page")
+    }
+    const notifyError = () => {
+        toast.warning("Invalid Credentials")
+    }
     // const [state, setState] = useState('initial/default value')
     // useState('initial value')
     // setState <- this update the state
@@ -38,16 +51,27 @@ export const LogIn = ({ setAuth }) => {
             // checks if the username is 'admin' then redirects to admin dashboard if true
             switch(data.username) {
                 case 'admin':
-                    window.location = '/ViewMyResponse';
-                     break;
+                    notifyLogIn()
+                    notifyAdminPage()
+                    setTimeout(() => {
+                        window.location = '/ViewMyResponse'
+                    }, 2500); // delay of 2.5 seconds
+                    break 
                 default:
-                    window.location = '/SeeResPersoInfo'; // old path /UserDash
-                    break; 
+                    notifyLogIn()
+                    notifyResidentPage()
+                    setTimeout(() => {
+                        window.location = '/SeeResPersoInfo'
+                    }, 2500); // delay of 2.5 seconds
+                    break 
             }
         })
-
-    } catch (error) {
-        console.log(error.message)
+        .catch(error => {
+            console.log(error.message)
+            notifyError()
+        });
+        } catch (error) {
+            console.log(error.message)
         }
     }
 
@@ -58,6 +82,7 @@ export const LogIn = ({ setAuth }) => {
         
             <Form onSubmit={onSubmitForm} className="needs-validation">
                 <h2 className="text-center">Log In</h2>
+                <hr />
                 <Form.Group className="mb-2 was-validated" controlId="formUsername">
                     <Form.Label column sm={2}>Username</Form.Label>
                             <Form.Control name="username" value={formData.username} onChange={onChange} type="text" placeholder="Enter username here" required />
@@ -78,7 +103,18 @@ export const LogIn = ({ setAuth }) => {
                     </button>  
                 </Link>
             </Form>
-            
+            <ToastContainer
+            position="top-right"
+            autoClose={9000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored" 
+            transition={Flip}  />
         </div>
         
         </>
