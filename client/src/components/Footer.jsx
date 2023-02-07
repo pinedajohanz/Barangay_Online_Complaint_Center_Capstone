@@ -5,30 +5,7 @@ export const Footer = () => {
     <>
      
     <footer className="text-center text-lg-center bg-white text-muted">
-        
-        {/* <!-- <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"> -->
-        
-            <!-- <div className="me-5 d-none d-lg-block">
-                <span> Follow us on our social media accounts:</span>
-            </div> -->
-        <!-- left -->
-        <!-- className="me-4 link-secondary" -->
-        <!-- right -->
-        <!-- <div>
-            <a className="btn text-white" style="background-color: #3b5998;" href="https://www.facebook.com/" role="button"> 
-                <i className="fab fa-facebook-square"></i>
-            </a>
-            <a href="" className="me-4 link-secondary">
-                <i className="fab fa-twitter"></i>
-            </a>
-            <a href="" className="me-4 link-secondary">
-                <i className="fab fa-instagram"></i>
-            </a>
-        </div> -->
-        <!-- right -->
-        <!-- </section> --> */}
-     
-        <section className="">
+        <section className="footer-section">
             <div className="container text-center text-md-start mt-5">
                 {/* <!-- grid row --> */}
                 <div className="row mt-3">
@@ -49,7 +26,7 @@ export const Footer = () => {
                             Useful links
                         </h6>
                         <p>
-                            <a href="#!" className="text-reset">FAQs</a>
+                            <a href="/FAQs" className="text-reset">FAQs</a>
                         </p>
                         <p>
                             <a href="#!" className="text-reset">Support</a>
