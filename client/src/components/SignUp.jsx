@@ -259,8 +259,9 @@ export const SignUp = ( {setAuth} ) => {
                             Submit
                         </Button>
                         {/* redirect to Log In page */}
+                        <hr />
                         <Link to="/login">
-                            <button className="btn btn-success my-3 block w-100">
+                            <button className="btn btn-info my-1 block w-100">
                                Already have an account? Log in here!
                             </button>
                         </Link>
