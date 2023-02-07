@@ -28,6 +28,7 @@ import ResToComp from './crud/admin/ResToComp';
 import ViewAllRes from './crud/admin/ViewAllRes';
 import UpdateDeleteStatus from './crud/admin/UpdateDeleteStatus';
 import ViewMyResponse from './crud/admin/ViewMyResponse';
+import FAQs from './pages/FAQs';
 
 //  Sets up several routes that map to different pages and components in the application.
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -39,6 +40,7 @@ root.render(
                 <Route index element={<Home />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/contact" element={<ContactUsPage />} /> 
+                <Route path="/FAQs" element={<FAQs />} />
 
                 <Route path="/login" element={<LogIn />} />
                 <Route path="/signup" element={<SignUp />} />
