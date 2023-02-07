@@ -42,9 +42,9 @@ function SeeResponse() {
   return (
     <>
     <div className='main'>
-      <div className='container-sidebaronly'>
+      {/* <div className='container-sidebaronly'> */}
       <SidebarRes />
-      </div>
+      {/* </div> */}
       <div className="container text-bg-light my-5 mx-5">
       <div className="h4 pb-2 mb-4 my-3 mx-3 text-success border-bottom border-success">
           See My Complaints
