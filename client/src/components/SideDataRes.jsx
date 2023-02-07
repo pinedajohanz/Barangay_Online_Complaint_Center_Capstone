@@ -31,7 +31,7 @@ export const SideDataRes = [
     {
         title: "FAQs",
         icon: <HelpIcon />,
-        link: "/"
+        link: "/FAQs"
     }
     // {
     //     title: "Log Out",
