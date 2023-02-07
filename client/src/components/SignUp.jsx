@@ -19,7 +19,7 @@ export const SignUp = ( {setAuth} ) => {
     }
 
     const notifyError = () => {
-        toast.danger("Something went wrong")
+        toast.error("Something went wrong")
     }
     // setFormData assigns a value from input of user
     // const [formData, setFormData] = useState({
