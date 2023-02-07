@@ -52,7 +52,11 @@ const FAQs = () => {
             </Accordion>
           </div>
           <div className='col-6'>
-            <img src={faq_img} className='img-fluid w-100 d-none d-sm-block' alt='img' style={{height: 400, width: 300}} />
+            <img 
+            src={faq_img} 
+            className='img-fluid w-100 d-none d-sm-block' 
+            alt='img' 
+            style={{height: 400, width: 300}} />
           </div>
         </div>
       </div>
