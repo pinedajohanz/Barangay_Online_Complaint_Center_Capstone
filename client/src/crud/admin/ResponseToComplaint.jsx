@@ -4,7 +4,7 @@ import SideBarAdmin from "../../components/SideBarAdmin";
 import Respondbtn from '../Respondbtn';
 import {FaArrowUp, FaArrowDown} from "react-icons/fa"
 
-function ResToComp() {
+function ResponseToComplaint() {
   // setting the inputs
   const [AllComp, setAllComp] = useState([]);
   //
@@ -154,4 +154,4 @@ function ResToComp() {
   )
 }
 
-export default ResToComp
+export default ResponseToComplaint
