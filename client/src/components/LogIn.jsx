@@ -69,7 +69,7 @@ export const LogIn = ({ setAuth }) => {
                     notifyLogIn()
                     notifyResidentPage()
                     setTimeout(() => {
-                        window.location = '/SeeResPersoInfo'
+                        window.location = '/MyProfile'
                     }, 2500); // delay of 2.5 seconds
                     break 
             } 
