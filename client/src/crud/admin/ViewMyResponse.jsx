@@ -89,7 +89,7 @@ export default function ViewMyResponse() {
           <div className="main">
             <SideBarAdmin />
                 <div className="container-main">
-                <div className="container text-bg-light my-5 mx-5">
+                <div className="container text-bg-light my-5 mx-3">
                   <div className="h4 pb-2 mb-4 my-3 mx-3 text-success border-bottom border-success">
                     View My Responses to a Complaint
                   </div>
