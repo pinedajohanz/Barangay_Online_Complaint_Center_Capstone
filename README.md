@@ -13,6 +13,9 @@ This project is for barangays in the Philippines and their residents who want to
 - Update status of a complaint: The barangay can update the status of a complaint.
 - Resident's personal information: The barangay can store the residents' personal information, and residents can view their information.
 - Complaints and information: Residents can view their complaints along with their personal information. The barangay can display the residents' information and their complaints.
+- Sort by status and complaint id
+- Filter or search a specific id, location, type of complaint, date and time, name, status,
+- View the responses from different complaints that the barangay responded or haven’t responded yet
 - Complaint status: The barangay can view the status of complaints that are in-progress or completed.
 - Delete a complaint: The barangay can delete a complaint if it is completed.
 
