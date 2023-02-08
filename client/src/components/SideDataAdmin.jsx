@@ -16,7 +16,7 @@ export const SideDataAdmin = [
     {
         title: "Respond to Complaints",
         icon: <ReplyIcon />,
-        link: "/ResToComp"
+        link: "/ResponseToComplaint"
     },
     {
         title: "Update status/Delete Complaints",
@@ -26,7 +26,7 @@ export const SideDataAdmin = [
     {
         title: "View Residents Info",
         icon: <ViewListIcon />,
-        link: "/ViewAllRes"
+        link: "/ViewAllResidentsInfo"
     }
     // {
     //     title: "Log Out",

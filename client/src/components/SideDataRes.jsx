@@ -11,17 +11,12 @@ export const SideDataRes = [
     {
         title: "Profile",
         icon: <HomeIcon />,
-        link: "/SeeResPersoInfo"
+        link: "/MyProfile"
     },
-    // {
-    //     title: "See my Complaints",
-    //     icon: <FindInPageIcon />,
-    //     link: "/SeeMyComp"
-    // },
     {
         title: "File a Complaint",
         icon: <ReportIcon />,
-        link: "/FileComp"
+        link: "/FileComplaint"
     },
     {
         title: "See My Complaints",
@@ -33,9 +28,4 @@ export const SideDataRes = [
         icon: <HelpIcon />,
         link: "/FAQs"
     }
-    // {
-    //     title: "Log Out",
-    //     icon: <ExitToAppIcon />,
-    //     link: "/"
-    // }
 ]

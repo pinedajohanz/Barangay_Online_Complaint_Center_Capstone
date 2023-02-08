@@ -5,7 +5,7 @@ import { useState } from 'react'
 import e from 'cors';
 import { ToastContainer, toast, Flip } from 'react-toastify'; 
 
-function FileComp() {
+function FileComplaint() {
     // pop up notification if form submitted successfully
     const notify = () => {
         toast.success("Complaint Form Submitted!")
@@ -13,7 +13,7 @@ function FileComp() {
 
     // function for clear form button
     const ResetForm = () => {
-        window.location= "/FileComp"
+        window.location= "/FileComplaint"
     }
 
     // setting inputs by useState hook
@@ -97,4 +97,4 @@ function FileComp() {
     </>
   )
 }
-export default FileComp
+export default FileComplaint

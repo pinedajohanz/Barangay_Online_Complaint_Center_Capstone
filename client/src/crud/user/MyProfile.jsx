@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import "../../dashboard/Dashboard.css"
 import SidebarRes from "../../components/SidebarRes";
 
-function SeeResPersoInfo() {
+function MyProfile() {
   // get user's resident_id from local storage of browser 
   const resident_id = localStorage.getItem('user.resident_id')
   const token = localStorage.getItem('user.token')
@@ -113,4 +113,4 @@ function SeeResPersoInfo() {
   )
 }
 
-export default SeeResPersoInfo
+export default MyProfile
