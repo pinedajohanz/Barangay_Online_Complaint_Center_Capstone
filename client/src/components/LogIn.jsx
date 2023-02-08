@@ -27,21 +27,9 @@ export const LogIn = ({ setAuth }) => {
         username: yup.string().min(4, "Minimum of 4 characters").max(20, "Maximum of 20 characters").required("Username is required"),
         password: yup.string().min(5, "Password must be at least 5 characters").max(25, "Maximum of 25 characters").required("Password is required")
       });
-    // const [state, setState] = useState('initial/default value')
-    // useState('initial value')
-    // setState <- this update the state
-    // const [formData, setFormData] = useState({
-    //     username: "",
-    //     password: ""
-    // })
     
-     //setting the inputs
-    // const onChange = (e) => {    //username     : testusername   
-    //     setFormData({ ...formData, [e.target.name]: e.target.value })
-    // }
     // onSubmit form function for Log In authentication
     const onSubmitForm = async (values, { setSubmitting, setErrors }) => {
-        // e.preventDefault()
         
     try {
         //fetch api for POST method
@@ -77,10 +65,6 @@ export const LogIn = ({ setAuth }) => {
             notifyError()
             setErrors({ server: 'Something went wrong, please try again later.' });
         }
-        // .catch(error => {
-        //     console.log(error.message)
-        //     notifyError()
-        // });
         } catch (error) {
             notifyError()
             setErrors({ server: error.message });
@@ -173,6 +157,21 @@ export const LogIn = ({ setAuth }) => {
         </>
     )
 }
+
+
+// const [state, setState] = useState('initial/default value')
+    // useState('initial value')
+    // setState <- this update the state
+    // const [formData, setFormData] = useState({
+    //     username: "",
+    //     password: ""
+    // })
+    
+     //setting the inputs
+    // const onChange = (e) => {    //username     : testusername   
+    //     setFormData({ ...formData, [e.target.name]: e.target.value })
+    // }
+
 
 // if(res.username === 'admin'){
             //     window.location = '/AdminDash'
