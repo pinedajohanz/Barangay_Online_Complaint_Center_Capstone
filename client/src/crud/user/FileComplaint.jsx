@@ -81,6 +81,7 @@ function FileComplaint() {
             <div className='d-grid gap-2'>
             <button className="btn btn-primary my-2 btn-lg" >Submit</button>
             </div>
+            <hr />
             <div className='d-grid gap-1'>
             <button className="btn btn-secondary my-2 btn-lg" onClick={ResetForm}>Clear Form</button>
             </div>
