@@ -11,6 +11,10 @@ function FileComplaint() {
         toast.success("Complaint Form Submitted!")
     }
 
+    const notifyError = () => {
+        toast.error("Form Error")
+    }
+
     // function for clear form button
     const ResetForm = () => {
         window.location= "/FileComplaint"
@@ -53,6 +57,7 @@ function FileComplaint() {
         
         console.log(res)
         } catch (err) {
+            notifyError()
             console.error(err.message)
         }
     }
