@@ -21,11 +21,11 @@ import {LogIn} from './components/LogIn'
 import {SignUp} from './components/SignUp'
 import UserDash from './dashboard/UserDash'
 import AdminDash from './dashboard/AdminDash'
-import SeeResPersoInfo from './crud/user/SeeResPersoInfo';
-import FileComp from './crud/user/FileComp';
+import MyProfile from './crud/user/MyProfile';
+import FileComplaint from './crud/user/FileComplaint';
 import SeeResponse from './crud/user/SeeResponse';
-import ResToComp from './crud/admin/ResToComp';
-import ViewAllRes from './crud/admin/ViewAllRes';
+import ResponseToComplaint from './crud/admin/ResponseToComplaint';
+import ViewAllResidentsInfo from './crud/admin/ViewAllResidentsInfo';
 import UpdateDeleteStatus from './crud/admin/UpdateDeleteStatus';
 import ViewMyResponse from './crud/admin/ViewMyResponse';
 import FAQs from './pages/FAQs';
@@ -48,15 +48,14 @@ root.render(
                 <Route path="/AdminDash" element={<AdminDash />} />
 
                 {/* Routing for User Side */}
-                <Route path="/SeeResPersoInfo" element={<SeeResPersoInfo />} />
-                {/* <Route path="/SeeMyComp" element={<SeeMyComp />} /> */}
-                <Route path="/FileComp" element={<FileComp />} />
+                <Route path="/MyProfile" element={<MyProfile />} />
+                <Route path="/FileComplaint" element={<FileComplaint />} />
                 <Route path="/SeeResponse" element={<SeeResponse />} />
                 
                 {/* Routing for Admin Side */}
-                <Route path="/ResToComp" element={<ResToComp />} />
+                <Route path="/ResponseToComplaint" element={<ResponseToComplaint />} />
                 <Route path="/UpdateDeleteStatus" element={<UpdateDeleteStatus />} />
-                <Route path="/ViewAllRes" element={<ViewAllRes />} />
+                <Route path="/ViewAllResidentsInfo" element={<ViewAllResidentsInfo />} />
                 <Route path="/ViewMyResponse" element={<ViewMyResponse />} />
             </Routes>
         </BrowserRouter>
