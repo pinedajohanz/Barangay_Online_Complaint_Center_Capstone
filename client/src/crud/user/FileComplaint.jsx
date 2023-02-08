@@ -70,12 +70,12 @@ function FileComplaint() {
         <h2 className="text-center my-5">File A Complaint Form</h2>
         <hr />
             <label className="fs-4">Complaint message:</label>
-            <textarea className="form-control my-3" type="text" placeholder="Write your Complaint here" value={message_comp} onChange={e => setmessage_comp(e.target.value)} required />
+            <textarea className="form-control my-3" type="text" placeholder="Write your Complaint here...." value={message_comp} onChange={e => setmessage_comp(e.target.value)} required />
             <label className="fs-4">Location of Complaint:</label>
-            <input className="form-control my-3" type="text" placeholder="Barangay Molino 4" value={location_of_complaint} onChange={e => setlocation_of_complaint(e.target.value)} required/>
+            <input className="form-control my-3" type="text" placeholder="Mary Homes Subdivision" value={location_of_complaint} onChange={e => setlocation_of_complaint(e.target.value)} required/>
             <label className="fs-4">Type of Complaint:</label>
-            <input className="form-control my-3" type="text" placeholder="Type of Complaint (Road Issue, Drainage Issue)" value={type_of_complaint} onChange={e => settype_of_complaint(e.target.value)} required />
-            <label className="fs-5">User ID# (AUTO GENERATED)</label>
+            <input className="form-control my-3" type="text" placeholder="(Road Issue, Drainage Issue, Electrical Issue)" value={type_of_complaint} onChange={e => settype_of_complaint(e.target.value)} required />
+            <label className="fs-5">User ID# <span className='fs-6 fw-light'>(AUTO GENERATED)</span></label>
             <input className="form-control my-3" type="number" placeholder="RESIDENT ID" value={resident_id} aria-label="Disabled input example" disabled />
             
             <div className='d-grid gap-2'>
