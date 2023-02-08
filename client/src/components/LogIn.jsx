@@ -112,7 +112,7 @@ export const LogIn = ({ setAuth }) => {
                                     isInvalid={!!errors.username}
                                     isValid={touched.username && !errors.username}
                                     type="username" 
-                                    placeholder="(ex. Johanz23)" 
+                                    placeholder="(e.g. Johanz23)" 
                                     />
                                     <Form.Control.Feedback type="invalid">
                                     {errors.username}
