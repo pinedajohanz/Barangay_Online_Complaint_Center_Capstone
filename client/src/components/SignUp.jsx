@@ -39,7 +39,14 @@ export const SignUp = ( {setAuth} ) => {
         first_name: yup.string().min(2, "Minimum of 2 characters").max(20, "Maximum of 20 characters").required("First name is required"),
         middle_init: yup.string().max(2, "Maximum of 2 characters").required("Middle initial is required"),
         last_name: yup.string().min(2, "Minimum of 2 characters").max(20, "Maximum of 20 characters").required("Last name is required"),
-        birthday: yup.date().required("Birthday is required"),
+        birthday: yup.date().required("Birthday is required")
+            // checks if user is atleast 18 
+            .test('is-at-least-18', 'You must be at least 18 years old', value => {
+                // variable is a (new date - 18) from the present date to check if user input is earlier to new date else display error message
+                const eighteenYearsAgo = new Date();
+                eighteenYearsAgo.setFullYear(eighteenYearsAgo.getFullYear() - 18);
+                return value <= eighteenYearsAgo;
+            }),
         subdivision_address: yup.string().required("Subdivision is required"),
         house_street_address: yup.string().required("House street is required"),
         contact_number: yup.string().matches(/^\d{10}$/, 'Contact number must be 11 digits').required("Contact number is required"),
@@ -122,12 +129,12 @@ export const SignUp = ( {setAuth} ) => {
                         <Form.Group className="mb-3" controlId="formMiddle_init">
                             <Form.Label column sm>Middle initial</Form.Label>
                                     <Form.Control 
+                                    type="text" 
                                     name="middle_init" 
                                     value={values.middle_init} 
                                     onChange={handleChange} 
-                                    isInvalid={!!errors.middle_init}
                                     isValid={touched.middle_init && !errors.middle_init}
-                                    type="text" 
+                                    isInvalid={!!errors.middle_init}
                                     placeholder="B." 
                                     />
                                     <Form.Control.Feedback type="invalid">
