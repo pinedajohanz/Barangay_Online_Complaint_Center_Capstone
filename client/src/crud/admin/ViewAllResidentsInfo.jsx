@@ -9,7 +9,7 @@ import { FilterMatchMode } from "primereact/api"
 import { InputText } from "primereact/inputtext"
 import "../../dashboard/Dashboard.css"
 
-function ViewAllRes() {
+function ViewAllResidentsInfo() {
 
   // retrieve user token from local storage
   const token = localStorage.getItem('user.token') 
@@ -84,7 +84,7 @@ function ViewAllRes() {
   )
 }
 
-export default ViewAllRes
+export default ViewAllResidentsInfo
 
 
 
