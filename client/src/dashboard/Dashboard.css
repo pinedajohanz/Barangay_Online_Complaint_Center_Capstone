@@ -162,7 +162,8 @@ i {
 }
 .form-box {
     border: 1px solid cyan;
-    border-radius: 10px;
+    border-radius: 50px;
+    
 }
 
 .form-border {

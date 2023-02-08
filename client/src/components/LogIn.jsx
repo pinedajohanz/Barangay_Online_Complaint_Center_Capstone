@@ -8,7 +8,7 @@ import axios from "axios";
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { ToastContainer, toast, Flip } from 'react-toastify'; 
-
+import log_in_img from './log_in_img.svg'
 export const LogIn = ({ setAuth }) => {
     const notifyLogIn = () => {
         toast.success("Log in Credentials Accepted!")
@@ -92,74 +92,84 @@ export const LogIn = ({ setAuth }) => {
     return (
         <> 
         <NavbarBootstrap />
-        <div className="form-box d-flex mx-auto my-5 align-items-center justify-content-center shadow-lg">
-        <Formik 
-        validationSchema={validationSchema}
-        initialValues={{ username: '', password: '' }} 
-        onSubmit={onSubmitForm}
-        >   
-            {({  isSubmitting, handleSubmit, handleChange, values, touched, errors  }) => (
-            <Form noValidate onSubmit={handleSubmit}>
-                <h2 className="text-center">Log In</h2>
-                <hr />
-                <Form.Group className="mb-3 " controlId="formUsername">
-                            <Form.Label column sm={2}>Username</Form.Label>
-                            <InputGroup hasValidation>
-                                    <Form.Control 
-                                    name="username" 
-                                    value={values.username} 
-                                    onChange={handleChange} 
-                                    isInvalid={!!errors.username}
-                                    isValid={touched.username && !errors.username}
-                                    type="username" 
-                                    placeholder="(e.g. Johanz23)" 
-                                    />
-                                    <Form.Control.Feedback type="invalid">
-                                    {errors.username}
-                                    </Form.Control.Feedback>
-                            </InputGroup>
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="formPassword">
-                            <Form.Label column sm={2}>Password</Form.Label>
-                                    <Form.Control name="password" 
-                                    value={values.password}
-                                    onChange={handleChange} 
-                                    isInvalid={!!errors.password}
-                                    isValid={touched.password && !errors.password}
-                                    type="password" 
-                                    placeholder="***********" 
-                                    />
-                                    <Form.Control.Feedback type="invalid">
-                                        {errors.password}
-                                    </Form.Control.Feedback>
-                        </Form.Group>
-                <Button className="block w-100" variant="primary" type="submit" disabled={isSubmitting}>
-                    Log in
-                </Button>
-                {/* redirect to Sign Up page */}
-                <hr />
-                <Link to="/signup">
-                    <button className="btn btn-info my-1 block w-100"> 
-                    Don't have an account yet? Sign Up here!
-                    </button>  
-                </Link>
-            </Form>
-            )}
-        </Formik>
-            <ToastContainer
-            position="top-right"
-            autoClose={9000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="colored" 
-            transition={Flip}  />
+        <div className="container-out m-4 p-5">
+            <div className="row d-sm-flex">
+            <div className="col-md-6 container-login-img m-auto">
+            <img className="img-fluid w-100 d-sm-block py-3 m-auto"
+                    src={log_in_img}
+                    alt="img"
+                    style={{height:450, width:300}}
+                    />
+            </div>
+            <div className="col-md-6 form-box d-flex p-4 m-auto justify-content-center shadow-lg">
+            <Formik 
+            validationSchema={validationSchema}
+            initialValues={{ username: '', password: '' }} 
+            onSubmit={onSubmitForm}
+            >   
+                {({  isSubmitting, handleSubmit, handleChange, values, touched, errors  }) => (
+                <Form noValidate onSubmit={handleSubmit}>
+                    <h2 className="text-center">Log In</h2>
+                    <hr />
+                    <Form.Group className="mb-3 " controlId="formUsername">
+                                <Form.Label column sm={2}>Username</Form.Label>
+                                <InputGroup hasValidation>
+                                        <Form.Control 
+                                        name="username" 
+                                        value={values.username} 
+                                        onChange={handleChange} 
+                                        isInvalid={!!errors.username}
+                                        isValid={touched.username && !errors.username}
+                                        type="username" 
+                                        placeholder="(e.g. Johanz23)" 
+                                        />
+                                        <Form.Control.Feedback type="invalid">
+                                        {errors.username}
+                                        </Form.Control.Feedback>
+                                </InputGroup>
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="formPassword">
+                                <Form.Label column sm={2}>Password</Form.Label>
+                                        <Form.Control name="password" 
+                                        value={values.password}
+                                        onChange={handleChange} 
+                                        isInvalid={!!errors.password}
+                                        isValid={touched.password && !errors.password}
+                                        type="password" 
+                                        placeholder="***********" 
+                                        />
+                                        <Form.Control.Feedback type="invalid">
+                                            {errors.password}
+                                        </Form.Control.Feedback>
+                            </Form.Group>
+                    <Button className="block w-100" variant="primary" type="submit" disabled={isSubmitting}>
+                        Log in
+                    </Button>
+                    {/* redirect to Sign Up page */}
+                    <hr />
+                    <Link to="/signup">
+                        <button className="btn btn-info my-1 block w-100"> 
+                        Don't have an account yet? Sign Up here!
+                        </button>  
+                    </Link>
+                </Form>
+                )}
+            </Formik>
+                <ToastContainer
+                position="top-right"
+                autoClose={9000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored" 
+                transition={Flip}  />
+            </div>
+            </div>
         </div>
-        
         </>
     )
 }
