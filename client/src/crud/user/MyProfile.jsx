@@ -3,7 +3,7 @@ import "../../dashboard/Dashboard.css"
 import SidebarRes from "../../components/SidebarRes";
 
 function MyProfile() {
-  // get user's resident_id from local storage of browser 
+  // get user's resident_id & token from local storage of browser 
   const resident_id = localStorage.getItem('user.resident_id')
   const token = localStorage.getItem('user.token')
   // setting inputs by useState(Array) hook
