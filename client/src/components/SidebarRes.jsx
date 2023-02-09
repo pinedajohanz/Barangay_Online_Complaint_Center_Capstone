@@ -3,7 +3,7 @@ import {SideDataRes} from './SideDataRes'
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 const SidebarRes = () => {
-
+    // log out function
     const handleLogout = () => {
         localStorage.removeItem('user.token')
         localStorage.removeItem('user.resident_id')
