@@ -133,10 +133,8 @@ function ResponseToComplaint() {
                       <td>{Complaints.location_of_complaint}</td>
                       <td className="fw-semibold">{Complaints.type_of_complaint}</td>
                       <td className='fw-semibold'>{Complaints.date_time}</td>
-                      {/* <td>{Complaints.date_time}</td> */}
                       <td>{Complaints.first_name} {Complaints.last_name}</td>
                       <td className="fw-bolder">{Complaints.status_msg}</td>
-                      {/* <td>{Complaints.status_info_id}</td> */}
                       <td>
                         
                         <Respondbtn Complaints={Complaints} />
