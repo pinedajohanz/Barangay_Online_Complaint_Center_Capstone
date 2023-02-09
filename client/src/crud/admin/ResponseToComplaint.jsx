@@ -35,18 +35,18 @@ function ResponseToComplaint() {
     // spread operator to retain the original array
     const AllCompCopy = [...AllComp];
     // .sort((parameter, parameter)) the parameter determines on sorting order
-     AllCompCopy.sort((AllCompA, AllCompB ) => { 
-       const status_infoA = `${AllCompA.status_msg}`;
-       const status_infoB = `${AllCompB.status_msg}`;
+    AllCompCopy.sort((AllCompA, AllCompB ) => { 
+      const status_infoA = `${AllCompA.status_msg}`;
+      const status_infoB = `${AllCompB.status_msg}`;
 
-       // order of the comparison depends on the value of the sorted.reversed property, which determines if the sort order should be ascending or descending.
-       if (sorted.reversed) {
-        // sorting is done by comparing the status_msg properties of two objects (positive# or negative#)
-        return status_infoB.localeCompare(status_infoA);
-       }
-       return status_infoA.localeCompare(status_infoB);
-     });
-     setAllComp(AllCompCopy)
+      // order of the comparison depends on the value of the sorted.reversed property, which determines if the sort order should be ascending or descending.
+      if (sorted.reversed) {
+      // sorting is done by comparing the status_msg properties of two objects (positive# or negative#)
+      return status_infoB.localeCompare(status_infoA);
+      }
+      return status_infoA.localeCompare(status_infoB);
+    });
+    setAllComp(AllCompCopy)
   }
   // re-use function (DISPLAY ALL COMPLAINTS) for See Responses to Complaints section (ADMIN)
   // GET all Complaints from Residents

@@ -19,7 +19,8 @@ export default function ViewMyResponse() {
     // function for sorting by ID
     const SortbyID = () => {
       setSorted({ sorted: "id", reversed: !sorted.reversed})
-        const idsCopy = [...AllComp];
+      // spread operator to retain the original array 
+      const idsCopy = [...AllComp];
         idsCopy.sort((idsA, idsB ) => {
           if (sorted.reversed) {
             return idsA.complaints_id - idsB.complaints_id
@@ -31,13 +32,17 @@ export default function ViewMyResponse() {
   
       // function for sorting by Status
       const SortbyStatus = () => {
+      // spread operator to retain the original array
       setSorted({ sorted: "status", reversed: !sorted.reversed});
       const AllCompCopy = [...AllComp];
+        // .sort((parameter, parameter)) the parameter determines on sorting order
         AllCompCopy.sort((AllCompA, AllCompB ) => { 
           const status_infoA = `${AllCompA.status_msg}`;
           const status_infoB = `${AllCompB.status_msg}`;
-  
+          
+          // order of the comparison depends on the value of the sorted.reversed property, which determines if the sort order should be ascending or descending.
           if (sorted.reversed) {
+          // sorting is done by comparing the status_msg properties of two objects (positive# or negative#)
           return status_infoB.localeCompare(status_infoA);
           }
           return status_infoA.localeCompare(status_infoB);

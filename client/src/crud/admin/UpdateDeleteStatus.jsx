@@ -39,13 +39,17 @@ function UpdateDeleteStatus() {
       // function for sorting by Status
       const SortbyStatus = () => {
        setSorted({ sorted: "status", reversed: !sorted.reversed});
+       // spread operator to retain the original array
        const AllCompCopy = [...AllComp];
+        // .sort((parameter, parameter)) the parameter determines on sorting order
         AllCompCopy.sort((AllCompA, AllCompB ) => { 
           const status_infoA = `${AllCompA.status_msg}`;
           const status_infoB = `${AllCompB.status_msg}`;
-   
+          
+          // order of the comparison depends on the value of the sorted.reversed property, which determines if the sort order should be ascending or descending.
           if (sorted.reversed) {
-           return status_infoB.localeCompare(status_infoA);
+          // sorting is done by comparing the status_msg properties of two objects (positive# or negative#)
+          return status_infoB.localeCompare(status_infoA);
           }
           return status_infoA.localeCompare(status_infoB);
         });
@@ -105,13 +109,13 @@ function UpdateDeleteStatus() {
     getAllComp();
   }, []);
 
-    // arrow icon for sorting 
-    const renderArrow = () => {
-      if(sorted.reversed) {
-        return <FaArrowUp />
-      }
-      return <FaArrowDown />
+  // arrow icon for sorting 
+  const renderArrow = () => {
+    if(sorted.reversed) {
+      return <FaArrowUp />
     }
+    return <FaArrowDown />
+  }
 
   return (
     <>
@@ -131,7 +135,7 @@ function UpdateDeleteStatus() {
         <table className="table table-hover">
             <thead className='table-success'>
                 <tr>
-                <th scope="col" onClick={SortbyID}> <span style={{ marginRight:10 }}>Complaint ID# </span> {renderArrow()}</th>
+                <th scope="col" onClick={SortbyID}> <span style={{ marginRight:10 }}> Complaint ID#  </span> {renderArrow()}</th>
                 <th scope="col">Message from Complainant</th>
                 <th scope="col">Location of Complaint</th>
                 <th scope="col">Type of Complaint</th>

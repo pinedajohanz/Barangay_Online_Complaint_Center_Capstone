@@ -32,13 +32,17 @@ function SeeResponse() {
     // function for sorting by Status
     const SortbyStatus = () => {
      setSorted({ sorted: "status", reversed: !sorted.reversed});
+     // spread operator to retain the original array
      const MyCompCopy = [...MyComplaints];
+      // .sort((parameter, parameter)) the parameter determines on sorting order
       MyCompCopy.sort((MyCompA, MyCompB ) => { 
         const status_infoA = `${MyCompA.status_msg}`;
         const status_infoB = `${MyCompB.status_msg}`;
- 
+        
+        // order of the comparison depends on the value of the sorted.reversed property, which determines if the sort order should be ascending or descending.
         if (sorted.reversed) {
-         return status_infoB.localeCompare(status_infoA);
+        // sorting is done by comparing the status_msg properties of two objects (positive# or negative#)
+        return status_infoB.localeCompare(status_infoA);
         }
         return status_infoA.localeCompare(status_infoB);
       });
