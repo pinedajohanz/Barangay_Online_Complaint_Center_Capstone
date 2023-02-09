@@ -1,4 +1,11 @@
 import React from 'react'
+import EmailIcon from '@mui/icons-material/Email';
+import SmartphoneIcon from '@mui/icons-material/Smartphone';
+import PhoneIcon from '@mui/icons-material/Phone';
+import LocationCityIcon from '@mui/icons-material/LocationCity';
+import HelpCenterIcon from '@mui/icons-material/HelpCenter';
+import AssuredWorkloadIcon from '@mui/icons-material/AssuredWorkload';
+import FacebookIcon from '@mui/icons-material/Facebook';
 
 export const Footer = () => {
   return (
@@ -13,13 +20,12 @@ export const Footer = () => {
                     <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                         {/* <!-- content --> */}
                         <h6 className="text-uppercase fw-bold mb-4">
-                            <i className="fas fa-gem me-3 text-secondary"></i>
-                            iSumBongMo! 
+                            <AssuredWorkloadIcon />
+                            <span style={{paddingLeft: 10}}>iSumBongMo</span>! 
 
                         </h6>
                         <p> 
-                            An online web application that allows residents to file complaints and the barangay to respond and manage the complaint status. 
-                        </p>
+                        An online web application that allows residents to file complaints and the barangay to respond and manage the complaints and their status.                        </p>
                     </div>
                     {/* <!-- grid column --> */}
                     
@@ -28,7 +34,16 @@ export const Footer = () => {
                             Useful links
                         </h6>
                         <p>
-                            <a href="/FAQs" className="text-reset">FAQs</a>
+                            <a href="/FAQs" className="text-reset"> 
+                            <HelpCenterIcon /> 
+                            <span style={{paddingLeft: 10}}>FAQs</span>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://www.facebook.com/officialbarangaymolino3" className="text-reset"> 
+                            <FacebookIcon /> 
+                            <span style={{paddingLeft: 10}}>Facebook Page</span>
+                            </a>
                         </p>
                     </div>
                     {/* <!-- grid column -->
@@ -37,13 +52,22 @@ export const Footer = () => {
                     <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                         {/* <!-- links --> */}
                         <h6 className="text-uppercase fw-bold mb-4">Contact</h6>
-                        <p><i className="fas fa-map-marker me-3 text-secondary"></i>Cavite Philippines</p>
                         <p>
-                            <i className="fas fa-envelope me-3 text-seconday"></i>
-                            Barangay_Molino_3@gmail.com
+                            <LocationCityIcon /> 
+                            <span style={{paddingLeft: 10}}>Bacoor, Cavite, Philippines</span>
                         </p>
-                        <p><i className="fas fa-phone me-3 text-seconday"></i>(046) 484-0999</p>
-                        <p><i className="fas fa-print me-3 text-seconday"></i>+987654321</p>
+                        <p>
+                            <EmailIcon />
+                            <span style={{paddingLeft: 10}}>Barangay_Molino_3@gmail.com</span>
+                        </p>
+                        <p> 
+                            <PhoneIcon /> 
+                            <span style={{paddingLeft: 10}}>(046) 438-5705</span>
+                            </p>
+                        <p> 
+                            <SmartphoneIcon /> 
+                            <span style={{paddingLeft: 10}}>09774658252</span>
+                            </p>
                     </div>
                     {/* <!-- grid column --> */}
                 </div>
