@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { Link } from "react-router-dom";
 import {NavbarBootstrap} from "./Navbarbs"
 import Button from 'react-bootstrap/Button'
@@ -10,6 +10,7 @@ import * as yup from 'yup';
 import { ToastContainer, toast, Flip } from 'react-toastify'; 
 import log_in_img from './log_in_img.svg'
 export const LogIn = ({ setAuth }) => {
+    // toastify notifications
     const notifyLogIn = () => {
         toast.success("Log in Credentials Accepted!")
     }
@@ -23,6 +24,7 @@ export const LogIn = ({ setAuth }) => {
         toast.error("Invalid Credentials")
     }
 
+    // validation schema YUP
     const validationSchema = yup.object().shape({
         username: yup.string().min(4, "Minimum of 4 characters").max(20, "Maximum of 20 characters").required("Username is required"),
         password: yup.string().min(5, "Password must be at least 5 characters").max(25, "Maximum of 25 characters").required("Password is required")
@@ -37,7 +39,6 @@ export const LogIn = ({ setAuth }) => {
         const res = await axios.post("http://localhost:5000/login", values)
         
         // response from server is stored in 'res'
-        // .then(res => {
             if(res.status === 200){
             // data within that response is stored in the variable "data"
             const data = res.data
