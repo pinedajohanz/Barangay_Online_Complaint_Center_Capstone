@@ -19,7 +19,7 @@ function UpdateDeleteStatus() {
   // retrieve token from local storage
   const token = localStorage.getItem('user.token') 
 
-  // 
+  // updates the state of the application to reflect the desired sort order.
   const [sorted, setSorted] = useState({ sorted: "", reversed: false});
 
 
@@ -57,6 +57,7 @@ function UpdateDeleteStatus() {
   async function deleteComp(id) {
     console.log(id)
 
+    // if there is no token redirect to log in page
     if (!token) {
       window.location.href = "/login";
       return;

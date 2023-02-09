@@ -7,11 +7,10 @@ import {FaArrowUp, FaArrowDown} from "react-icons/fa"
 function ResponseToComplaint() {
   // setting the inputs
   const [AllComp, setAllComp] = useState([]);
-  //
+  // updates the state of the application to reflect the desired sort order.
   const [sorted, setSorted] = useState({ sorted: "", reversed: false});
   // search box
   const [searchPhrase, setSearchPhrase] = useState("")
-
   // retrieve user token from local storage
   const token = localStorage.getItem('user.token') 
 
@@ -45,14 +44,11 @@ function ResponseToComplaint() {
      });
      setAllComp(AllCompCopy)
   }
-
-
-
-
   // re-use function (DISPLAY ALL COMPLAINTS) for See Responses to Complaints section (ADMIN)
   // GET all Complaints from Residents
   async function getAllComp() {
 
+    // if there is no token redirect to log in page
     if (!token) {
       window.location.href = "/login";
       return;

@@ -10,7 +10,7 @@ function MyProfile() {
   const [PersoInfo, setPersoInfo] = useState([]);
   
   async function getPersoInfo() {
-
+    // if there is no token redirect to log in page
     if (!token) {
       window.location.href = "/login";
       return;

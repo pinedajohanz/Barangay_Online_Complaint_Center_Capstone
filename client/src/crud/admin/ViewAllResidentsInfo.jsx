@@ -22,6 +22,7 @@ function ViewAllResidentsInfo() {
   
   // get all residents information to display in the table
   async function getAllRes() {
+    // if there is no token redirect to log in page
     if (!token) {
       window.location.href = "/login";
       return;

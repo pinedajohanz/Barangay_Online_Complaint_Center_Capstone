@@ -3,13 +3,12 @@ import "../../dashboard/Dashboard.css"
 import SideBarAdmin from "../../components/SideBarAdmin";
 import {FaArrowUp, FaArrowDown} from "react-icons/fa"
 import Viewbtn from '../Viewbtn';
-import ReactPaginate from 'react-paginate'
 
 
 export default function ViewMyResponse() {
     // setting the inputs
     const [AllComp, setAllComp] = useState([]);
-    //
+    // updates the state of the application to reflect the desired sort order.
     const [sorted, setSorted] = useState({ sorted: "", reversed: false});
     // search box
     const [searchPhrase, setSearchPhrase] = useState("")
@@ -49,6 +48,7 @@ export default function ViewMyResponse() {
     // GET all Complaints from Residents
     async function getAllComp() {
 
+      // if there is no token redirect to log in page
       if (!token) {
         window.location.href = "/login";
         return;

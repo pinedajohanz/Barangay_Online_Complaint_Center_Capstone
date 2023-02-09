@@ -7,7 +7,7 @@ import {FaArrowUp, FaArrowDown} from "react-icons/fa"
 function SeeResponse() {
   // setting the inputs
   const [MyComplaints, setMyComplaints] = useState([]);
-  //
+  // updates the state of the application to reflect the desired sort order.
   const [sorted, setSorted] = useState({ sorted: "", reversed: false});
   // retrieve resident_id from browser local storage
   const resident_id = localStorage.getItem('user.resident_id')
@@ -48,6 +48,7 @@ function SeeResponse() {
   // GET the personal resident complaints to display
   async function getMyComplaints() {
 
+    // if there is no token redirect to log in page
     if (!token) {
       window.location.href = "/login";
       return;

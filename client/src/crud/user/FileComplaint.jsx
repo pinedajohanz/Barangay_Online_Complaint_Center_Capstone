@@ -41,9 +41,9 @@ function FileComplaint() {
         try {
             // store the data in the 'body'
             const body = { message_comp, location_of_complaint, type_of_complaint, resident_id }
-            
+            // retrieve the token from local storage
             const token = localStorage.getItem('user.token')
-
+            // if there is no token redirect to log in page
             if (!token) {
                 window.location.href = "/login";
                 return;
