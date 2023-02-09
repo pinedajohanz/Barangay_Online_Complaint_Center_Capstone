@@ -56,7 +56,7 @@ export const Footer = () => {
         <div className="text-center p-4">
             2023 Copyright: 
             <br />
-            <a className="text-reset fw-bold" href="https://github.com/shihansa3">iSumBongMo! By Johanz Robert Pineda</a>
+            <a className="text-reset fw-bold" href="https://github.com/pinedajohanz">iSumBongMo! By Johanz Robert Pineda</a>
         </div>
     </footer>
 
