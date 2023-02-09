@@ -17,7 +17,9 @@ function FileComplaint() {
 
     // function for clear form button
     const ResetForm = () => {
-        window.location= "/FileComplaint"
+        setmessage_comp("");
+        setlocation_of_complaint("");
+        settype_of_complaint("");
     }
 
     // setting inputs by useState hook
