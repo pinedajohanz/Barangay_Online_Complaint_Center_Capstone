@@ -11,9 +11,12 @@ const AboutPage = () => {
             <div className="row d-sm-flex align-items-center justify-content-between">
                 <div className="col-md-6 align-items-center">
                     <h1><span className="text-warning">About</span> Us</h1>
-                    <p className="lead my-4">
-                        Ang nag-aasikaso sa Barangay Online Complaint Center ay ang Barangay Molino 3 na nakabased sa Region 4A CALABARZON - Bacoor, Cavite 4102. May Problema? May Issue sa lugar niyo o ibang issue na pwede makatulong ang barangay? Ireport na dito sa ating online complaint center para matugunan agad!
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati nobis veniam totam deserunt, nostrum ratione odio mollitia saepe pariatur expedita ducimus quae aliquid quo aut, sed aperiam vero architecto laudantium!
+                    <p className="lead my-4 text-justify">
+                    Ang Barangay Online Complaint Center ay pinamamahalaan at pinangangasiwaan ng Barangay Molino 3 na nakabased sa Region 4A CALABARZON sa lungsod ng Bacoor, Cavite 4102. 
+                    <br />
+                    Mayroong hindi kayang malutas na problema o isyu sa iyong lugar na maaaring makatulong ang barangay? Huwag mag-atubiling ireport ito sa ating online complaint center para agad itong maaksyunan.
+                    <br />
+                    Ang layunin nito ay upang magbigay ng madaling paraan para sa mga residente na maipahayag ang kanilang mga reklamo at mga hinaing sa barangay, at upang matugunan nang mas mabilis at epektibo ang mga ito. Kami ay nagbibigay ng kahusayan at kagalingan sa pag-aasikaso sa mga reklamo na ipinapasa sa amin, upang matugunan nang tama at maayos ang mga ito.
                     </p>
                 </div>
                 <div className="col-6">
