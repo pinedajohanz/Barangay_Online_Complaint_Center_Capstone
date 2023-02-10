@@ -162,7 +162,7 @@ function UpdateDeleteStatus() {
               }
             }).map( Complaints => (
                   <tr key={Complaints.complaints_id}>
-                    <td>{Complaints.complaints_id}</td>
+                    <td className='text-center'>{Complaints.complaints_id}</td>
                     <td className='fw-semibold'>{Complaints.message_comp}</td>
                     <td>{Complaints.location_of_complaint}</td>
                     <td className='fw-semibold'>{Complaints.type_of_complaint}</td>

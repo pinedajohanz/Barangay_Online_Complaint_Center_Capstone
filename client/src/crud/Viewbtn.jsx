@@ -42,9 +42,11 @@ function Viewbtn({ Complaint }) {
   return (
     <>
         {/* button of modal */}
-        <div className='d-grid gap-2' style={{ display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center'}}>
+        <div className='d-grid gap-2' 
+        style={{ display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'}}
+        >
             <button 
                 type="button" 
                 className="btn btn-success btn-lg" 

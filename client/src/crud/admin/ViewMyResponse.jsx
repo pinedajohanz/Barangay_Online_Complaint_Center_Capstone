@@ -112,8 +112,8 @@ export default function ViewMyResponse() {
                           <th className="text-center" scope="col">Type of Complaint</th>
                           <th className="text-center" scope="col">Date & Time</th>
                           <th className="text-center" scope="col">Name  </th>
-                          <th scope="col" onClick={SortbyStatus}> <span style={{ marginRight:10 }}> Status </span> {renderArrow()}</th>
-                          <th className="text-center" scope="col">View My Responses</th>
+                          <th scope="col" className='text-center' onClick={SortbyStatus}> <span style={{ marginRight:10 }}> Status </span> {renderArrow()}</th>
+                          <th className="text-center" scope="col">View</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -127,11 +127,11 @@ export default function ViewMyResponse() {
                     }
                     }).map( Complaints => (
                           <tr key={Complaints.complaints_id}>
-                            <td>{Complaints.complaints_id}</td>
-                            <td className="fw-semibold">{Complaints.type_of_complaint}</td>
-                            <td className="fw-semibold">{Complaints.date_time}</td>
-                            <td>{Complaints.first_name} {Complaints.last_name}</td>
-                            <td className="fw-bolder">{Complaints.status_msg}</td>
+                            <td className='text-center'>{Complaints.complaints_id}</td>
+                            <td className="fw-semibold text-center">{Complaints.type_of_complaint}</td>
+                            <td className="fw-semibold text-center">{Complaints.date_time}</td>
+                            <td className='text-center'>{Complaints.first_name} {Complaints.last_name}</td>
+                            <td className="fw-bolder text-center">{Complaints.status_msg}</td>
                             <td>
                               <Viewbtn 
                               Complaint={Complaints.complaints_id} 
