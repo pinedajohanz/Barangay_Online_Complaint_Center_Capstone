@@ -18,7 +18,7 @@ const FAQs = () => {
             <Accordion.Item eventKey="0">
               <Accordion.Header>What is the purpose of the barangay online complaint center</Accordion.Header>
               <Accordion.Body>
-              An online web application that allows residents to file complaints and the barangay to respond and manage the complaint status. 
+              An online web application that allows residents to file complaints and the barangay to respond and manage the complaints and their status.
               </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item eventKey="1">
