@@ -1,7 +1,7 @@
 import React from 'react'
 import {NavbarBootstrap} from "../components/Navbarbs";
 import Accordion from 'react-bootstrap/Accordion';
-import faq_img from './faq_img.svg'
+import faq_img from './image/faq_img.svg'
 import { Footer } from '../components/Footer';
 import { Link } from 'react-router-dom';
 

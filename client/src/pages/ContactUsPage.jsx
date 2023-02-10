@@ -1,7 +1,7 @@
 import { NavbarBootstrap } from '../components/Navbarbs'
-import ContactImg from './contactImg.svg'
+import ContactImg from './image/contactImg.svg'
 import { Footer } from '../components/Footer';
-import molino3map from './molino3map.jpg'
+import molino3map from './image/molino3map.jpg'
 
 
 const ContactUsPage = () => {

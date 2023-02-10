@@ -8,7 +8,8 @@ import axios from "axios";
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { ToastContainer, toast, Flip } from 'react-toastify'; 
-import log_in_img from './log_in_img.svg'
+import log_in_img from './image/log_in_img.svg'
+
 export const LogIn = ({ setAuth }) => {
     // toastify notifications
     const notifyLogIn = () => {

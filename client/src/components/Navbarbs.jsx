@@ -1,4 +1,4 @@
-import logocp from './logocp.jpg'
+import logocp from './image/logocp.jpg'
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import LoginIcon from '@mui/icons-material/Login';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';

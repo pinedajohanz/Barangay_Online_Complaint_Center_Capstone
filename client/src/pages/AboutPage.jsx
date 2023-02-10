@@ -1,5 +1,5 @@
 import { NavbarBootstrap } from '../components/Navbarbs'
-import aboutImg from './aboutImg.svg'
+import aboutImg from './image/aboutImg.svg'
 import { Footer } from '../components/Footer';
 
 const AboutPage = () => {

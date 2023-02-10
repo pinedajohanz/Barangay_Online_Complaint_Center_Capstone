@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
-import forlandpage from './forlandpage.svg';
+import forlandpage from './image/forlandpage.svg';
 import { Footer } from './Footer';
 
 function LandPage() {
