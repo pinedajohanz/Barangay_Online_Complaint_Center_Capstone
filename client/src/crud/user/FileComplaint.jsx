@@ -4,6 +4,7 @@ import SidebarRes from "../../components/SidebarRes";
 import { useState } from 'react'
 import e from 'cors';
 import { ToastContainer, toast, Flip } from 'react-toastify'; 
+import ClearIcon from '@mui/icons-material/Clear';
 
 function FileComplaint() {
     // pop up notification if form submitted successfully
@@ -85,7 +86,12 @@ function FileComplaint() {
             </div>
             <hr />
             <div className='d-grid gap-1'>
-            <button className="btn btn-secondary my-2 btn-lg" onClick={ResetForm}>Clear Form</button>
+            <button className="btn btn-secondary my-2 btn-lg" onClick={ResetForm} style={{padding:10}}>
+                <div style={{marginRight:10}}>
+                <ClearIcon />
+                </div>
+                Clear Form
+                </button>
             </div>
         </form>
     </div>

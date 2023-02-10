@@ -4,6 +4,8 @@ import SideBarAdmin from "../../components/SideBarAdmin";
 import Updatebtn from '../Updatebtn';
 import { ToastContainer, toast, Flip } from 'react-toastify'; 
 import {FaArrowUp, FaArrowDown} from "react-icons/fa"
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 function UpdateDeleteStatus() {
   // toastify notification
@@ -171,11 +173,13 @@ function UpdateDeleteStatus() {
                     {/* <td>{Complaints.status_info_id}</td> */}
                     <td>
                       {/* passing a prop to updatebtn component */}
+                      
                       <Updatebtn Complaints={Complaints} />
                     </td>
                     <td>
                       <button className="btn btn-danger" onClick={() => deleteComp(Complaints.complaints_id)} >
-                        Delete
+                        <DeleteIcon />
+                        
                       </button>
                     </td>
                   </tr>

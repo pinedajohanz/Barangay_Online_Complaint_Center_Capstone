@@ -1,7 +1,7 @@
 // import e from 'express';
 import React, { useState } from 'react'
 import { ToastContainer, toast, Flip } from 'react-toastify'; 
-
+import ReplyIcon from '@mui/icons-material/Reply';
 
 function Respondbtn({ Complaints }) {
     // toastify function
@@ -48,8 +48,10 @@ function Respondbtn({ Complaints }) {
             className="btn btn-success" 
             data-bs-toggle="modal" 
             data-bs-target={`#id${complaints_id}`}
+            style={{width:80, marginLeft:10}}
         >
-            Respond
+            <ReplyIcon />
+            
         </button>
         </div>
         {/* id = "id22" */}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PageviewIcon from '@mui/icons-material/Pageview';
 
 function Viewbtn({ Complaint }) {
     const [MyRespo, setMyRespo] = useState([]);
@@ -41,7 +42,9 @@ function Viewbtn({ Complaint }) {
   return (
     <>
         {/* button of modal */}
-        <div className='d-grid gap-2'>
+        <div className='d-grid gap-2' style={{ display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'}}>
             <button 
                 type="button" 
                 className="btn btn-success btn-lg" 
@@ -49,8 +52,10 @@ function Viewbtn({ Complaint }) {
                 data-bs-target={`#id${Complaints_id}`}
                 // performs the fetch of data
                 onClick={getMyRespo}
+                style={{height: 50, width:50, padding:10, fontSize:10}}
             >
-                View
+                <PageviewIcon />
+                
             </button>
         </div>
         {/* Header of inner modal */}

@@ -1,6 +1,7 @@
 import e from 'cors';
 import React, { useState } from 'react'
 import { ToastContainer, toast, Flip } from 'react-toastify'; 
+import UpdateIcon from '@mui/icons-material/Update';
 
 function Updatebtn({ Complaints }) {
     // toastify function
@@ -46,7 +47,8 @@ function Updatebtn({ Complaints }) {
             // target complaint id row to update
             data-bs-target={`#id${Complaints.complaints_id}`}
         >
-            Update
+            <UpdateIcon />
+            
         </button>
 
         <div className="modal fade" id={`id${Complaints.complaints_id}`} tabIndex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
