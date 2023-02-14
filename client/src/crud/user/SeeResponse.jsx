@@ -119,9 +119,11 @@ function SeeResponse() {
               // if search bar is empty then display all complaints
               if (searchPhrase === "") {
                 return Complaints
+              // filter Complaints based on input of user 
               } else if (`${Complaints.complaints_id} ${Complaints.message_comp} ${Complaints.status_msg} `.toLowerCase().includes(searchPhrase.toLowerCase())) {
                 return Complaints
               }
+              // map/display out the returned Complaints
               }).map( Complaints => (
                     <tr key={Complaints.MyComplaints}>
                       <td className="text-center" >{Complaints.complaints_id}</td>

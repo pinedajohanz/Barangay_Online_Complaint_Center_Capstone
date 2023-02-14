@@ -38,25 +38,26 @@ function UpdateDeleteStatus() {
         setAllComp(idsCopy)
       }
    
-      // function for sorting by Status
-      const SortbyStatus = () => {
-       setSorted({ sorted: "status", reversed: !sorted.reversed});
-       // spread operator to retain the original array
-       const AllCompCopy = [...AllComp];
-        // .sort((parameter, parameter)) the parameter determines on sorting order
-        AllCompCopy.sort((AllCompA, AllCompB ) => { 
-          const status_infoA = `${AllCompA.status_msg}`;
-          const status_infoB = `${AllCompB.status_msg}`;
-          
-          // order of the comparison depends on the value of the sorted.reversed property, which determines if the sort order should be ascending or descending.
-          if (sorted.reversed) {
-          // sorting is done by comparing the status_msg properties of two objects (positive# or negative#)
-          return status_infoB.localeCompare(status_infoA);
-          }
-          return status_infoA.localeCompare(status_infoB);
-        });
-        setAllComp(AllCompCopy)
-     }
+    // function for sorting by Status
+    const SortbyStatus = () => {
+      setSorted({ sorted: "status", reversed: !sorted.reversed});
+      // spread operator to retain the original array
+      const AllCompCopy = [...AllComp];
+      // .sort((parameter, parameter)) the parameter determines on sorting order
+      AllCompCopy.sort((AllCompA, AllCompB ) => { 
+        const status_infoA = `${AllCompA.status_msg}`;
+        const status_infoB = `${AllCompB.status_msg}`;
+        
+        // order of the comparison depends on the value of the sorted.reversed property, which determines if the sort order should be ascending or descending.
+        if (sorted.reversed) {
+        // sorting is done by comparing the status_msg properties of two objects (positive# or negative#)
+        return status_infoB.localeCompare(status_infoA);
+        }
+        return status_infoA.localeCompare(status_infoB);
+      });
+      // sets the state to the new returned value of array
+      setAllComp(AllCompCopy)
+    }
 
 
   // DELETE Complaint function
@@ -79,7 +80,7 @@ function UpdateDeleteStatus() {
       // notification upon delete of complaint
       notify()
 
-      // setState to update the state that hold all complaints, by filtering out the complaint that has just been deleted. if ID != ID passed to the function, it keeps the element in the array and returns a new array without the element that was removed.
+      // setState to update the state (AllComp) that hold all complaints, by filtering out the complaint that has just been deleted. if ID != ID passed to the function, it keeps the element in the array and returns a new array without the element that was removed.
       setAllComp(AllComp.filter(Complaints => Complaints.complaints_id !== id))
 
     } catch (err) {
@@ -157,9 +158,11 @@ function UpdateDeleteStatus() {
               // if search bar is empty then display all complaints
               if (searchPhrase == "") {
                 return Complaints
+              // filter Complaints based on input of user 
               } else if (`${Complaints.complaints_id} ${Complaints.message_comp} ${Complaints.location_of_complaint} ${Complaints.type_of_complaint} ${Complaints.date_time} ${Complaints.status_msg} `.toLowerCase().includes(searchPhrase.toLowerCase())) {
                 return Complaints
               }
+            // map/display out the returned Complaints
             }).map( Complaints => (
                   <tr key={Complaints.complaints_id}>
                     <td className='text-center'>{Complaints.complaints_id}</td>

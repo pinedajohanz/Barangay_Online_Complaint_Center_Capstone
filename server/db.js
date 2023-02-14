@@ -1,3 +1,5 @@
+//  creating a connection pool to a PostgreSQL database using the "pg" library in Node.js.
+// Pool is used to manage a pool of connections to a PostgreSQL database.
 const  Pool  = require('pg').Pool
   
 const pool =  new  Pool({

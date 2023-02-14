@@ -1,10 +1,13 @@
+// used for creating, signing, and verifying JWTs
 const jwt = require("jsonwebtoken")
+// used for loading environment variables from a .env file.
 const dotenv = require("dotenv").config()
-// dotenv.config()
+
 
 const  auth = (req, res, next) => {
 	//this will check if a token is existing in the Authorization Header
 	const  token = req.header("Authorization")
+	// if there is no token send status 403: Invalid token
 	if (!token) {
 		return  res.status(403).json({ err:  'Invalid token' });
 	}
@@ -23,6 +26,8 @@ const  auth = (req, res, next) => {
 	}
 }
 module.exports = auth;
+
+
 
 
 //let tokenToVerify = token;

@@ -4,11 +4,11 @@ import { ToastContainer, toast, Flip } from 'react-toastify';
 import UpdateIcon from '@mui/icons-material/Update';
 
 function Updatebtn({ Complaints }) {
-    // toastify function
+    // notify user if status has updated 
     const notify = () => {
         toast.info("Status Updated!")
     }
-
+    // retrieve token from local storage
     const token = localStorage.getItem('user.token') 
 
     // editNum function
@@ -27,7 +27,7 @@ function Updatebtn({ Complaints }) {
             });
             //notification for update status
             notify()
-            
+            // delay of 1.5 seconds
             setTimeout(() => {
             window.location = "/UpdateDeleteStatus"}, 1500);
         } catch (err) {
@@ -75,6 +75,7 @@ function Updatebtn({ Complaints }) {
                 <select 
                 className="form-control" 
                 value={status_info_id} 
+                // if an event of change has triggered then setState to that new value
                 onChange={e => setStatus_info_id(e.target.value)} 
                 > 
                    <option value="0">IN-PROGRESS</option>
@@ -86,6 +87,7 @@ function Updatebtn({ Complaints }) {
             <button 
                 type="button" 
                 className="btn btn-primary"
+                // upon onClick calls out the editNum function and takes the complaints_id#
                 onClick={() => editNum(Complaints.complaints_id)}
             >
                 Update
