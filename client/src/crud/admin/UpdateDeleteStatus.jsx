@@ -166,17 +166,19 @@ function UpdateDeleteStatus() {
             }).map( Complaints => (
                   <tr key={Complaints.complaints_id}>
                     <td className='text-center'>{Complaints.complaints_id}</td>
-                    <td className='fw-semibold'>{Complaints.message_comp}</td>
+                    <td>{Complaints.message_comp}</td>
                     <td>{Complaints.location_of_complaint}</td>
-                    <td className='fw-semibold'>{Complaints.type_of_complaint}</td>
-                    <td className='fw-semibold'>{Complaints.date_time}</td>
-                    {/* <td>{Complaints.time_of_filing}</td> */}
+                    <td>{Complaints.type_of_complaint}</td>
+                    <td>{Complaints.date_time}</td>
                     <td>{Complaints.first_name} {Complaints.last_name}</td>
-                    <td className='fw-bolder'>{Complaints.status_msg}</td>
-                    {/* <td>{Complaints.status_info_id}</td> */}
+                    <td 
+                      style={{ color: Complaints.status_msg  === 'IN PROGRESS'? 'black': 'green'}}
+                      className='fw-semibold'
+                      >
+                        { Complaints.status_msg } 
+                      </td>
                     <td>
                       {/* passing a prop to updatebtn component */}
-                      
                       <Updatebtn Complaints={Complaints} />
                     </td>
                     <td>

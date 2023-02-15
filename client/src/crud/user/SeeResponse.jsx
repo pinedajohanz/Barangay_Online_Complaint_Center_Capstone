@@ -127,8 +127,13 @@ function SeeResponse() {
               }).map( Complaints => (
                     <tr key={Complaints.MyComplaints}>
                       <td className="text-center" >{Complaints.complaints_id}</td>
-                      <td className="text-center fw-semibold" >{Complaints.message_comp}</td>
-                      <td className="text-center fw-bold" >{Complaints.status_msg}</td>
+                      <td className="text-center" >{Complaints.message_comp}</td>
+                      <td 
+                      style={{ color: Complaints.status_msg  === 'IN PROGRESS'? 'black': 'green'}}
+                      className='fw-semibold text-center'
+                      >
+                        { Complaints.status_msg } 
+                      </td>
                       {/* View button  */}
                       <td>
                         <Viewbtn 

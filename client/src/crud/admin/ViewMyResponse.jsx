@@ -130,10 +130,15 @@ export default function ViewMyResponse() {
                     }).map( Complaints => (
                           <tr key={Complaints.complaints_id}>
                             <td className='text-center'>{Complaints.complaints_id}</td>
-                            <td className="fw-semibold text-center">{Complaints.type_of_complaint}</td>
-                            <td className="fw-semibold text-center">{Complaints.date_time}</td>
+                            <td className="text-center">{Complaints.type_of_complaint}</td>
+                            <td className="text-center">{Complaints.date_time}</td>
                             <td className='text-center'>{Complaints.first_name} {Complaints.last_name}</td>
-                            <td className="fw-bolder text-center">{Complaints.status_msg}</td>
+                            <td 
+                            style={{ color: Complaints.status_msg  === 'IN PROGRESS'? 'black': 'green'}}
+                            className='fw-semibold text-center'
+                            >
+                              { Complaints.status_msg } 
+                            </td>
                             <td>
                               <Viewbtn 
                               Complaint={Complaints.complaints_id} 
