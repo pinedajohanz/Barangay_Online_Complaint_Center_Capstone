@@ -46,7 +46,6 @@ const AboutPage = () => {
                             className="rounded-circle mb-3" alt="">
                             </img>
                             <h3 className='card-title mb-3'>Joshua Pineda</h3>
-                            <p className='card-text'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam sed, facere expedita enim porro in.</p>
                             
                         </div>
                     </div>
@@ -59,7 +58,7 @@ const AboutPage = () => {
                             className="rounded-circle mb-3" alt="">
                             </img>
                             <h3 className='card-title mb-3'>Leo Murphy</h3>
-                            <p className='card-text'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam sed, facere expedita enim porro in.</p>
+                            <p className='card-text'></p>
                             
                         </div>
                     </div>
@@ -72,7 +71,7 @@ const AboutPage = () => {
                             className="rounded-circle mb-3" alt="">
                             </img>
                             <h3 className='card-title mb-3'>Juria Medina</h3>
-                            <p className='card-text'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam sed, facere expedita enim porro in.</p>
+                            <p className='card-text'></p>
                             
                         </div>
                     </div>
@@ -85,7 +84,7 @@ const AboutPage = () => {
                             className="rounded-circle mb-3" alt="">
                             </img>
                             <h3 className='card-title mb-3'>Jiheon Morales</h3>
-                            <p className='card-text'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam sed, facere expedita enim porro in.</p>
+                            <p className='card-text'></p>
                             
                         </div>
                     </div>
