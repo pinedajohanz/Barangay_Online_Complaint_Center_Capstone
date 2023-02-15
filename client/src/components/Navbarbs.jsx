@@ -1,4 +1,4 @@
-import logocp from './image/logocp.jpg'
+import logo_img from './image/logo-new.png'
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import LoginIcon from '@mui/icons-material/Login';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
@@ -12,7 +12,7 @@ export const NavbarBootstrap = () => {
         <nav className="navbar navbar-dark navbar-expand-lg bg-dark">
             <div className="container-fluid">
               <a id="header_company" className="navbar-brand" href="/">
-              <img src={logocp} alt="Logo" className="logo-img"/>
+              <img src={logo_img} alt="Logo" className="logo-img" style={{borderRadius:100}} id="img-logo"/>
               <span className='logo-name'>iSumBongMo!</span>
               </a>
                 <button className="navbar-toggler" type="button" 
