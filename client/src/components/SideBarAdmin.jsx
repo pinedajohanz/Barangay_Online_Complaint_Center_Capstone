@@ -14,6 +14,9 @@ const SideBarAdmin = () => {
         <>
         <div className='container-sidebar'>
             <div className="sidebaradmin">
+            <div className='welcome'>
+                    <h3 className='text-center text-white p-4'>WELCOME, <br /> ADMIN</h3>
+                </div>
                 <ul className="SidebarList">
                     {/* Maps over an array of objects from the imported "SideDataAdmin" component */}
                     {SideDataAdmin.map((val, key) => {
