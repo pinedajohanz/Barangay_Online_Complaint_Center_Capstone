@@ -19,7 +19,7 @@ export const SideDataAdmin = [
         link: "/ResponseToComplaint"
     },
     {
-        title: "Update status/Delete Complaints",
+        title: "Update/Delete Complaints",
         icon: <UpdateIcon />,
         link: "/UpdateDeleteStatus"
     },

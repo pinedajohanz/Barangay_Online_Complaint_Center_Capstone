@@ -50,7 +50,7 @@ const SidebarRes = () => {
         <div className="container-sidebar">
             <div className="sidebarresident">
                 <div className='welcome'>
-                    <h3 className='text-center text-white p-4'>Welcome, <br /> {PersoInfo[0]?.first_name}!</h3>
+                  <h3 className='text-center text-white p-4'>WELCOME <br /> <span className='text-warning'>{PersoInfo[0]?.first_name}</span>!</h3>
                 </div>
                 <ul className="SidebarList">
                     {/* Maps over an array of objects from the imported "SideDataRes" component */}
