@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import {SideDataRes} from './SideDataRes'
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import { ToastContainer, toast, Flip } from 'react-toastify'; 
 
 const SidebarRes = () => {
+  // toastify for logging out
+  const notifyLogOut = () => {
+    toast.info("Logging out...")
+  }
   // log out function
   const handleLogout = () => {
+      notifyLogOut()
       localStorage.removeItem('user.token')
       localStorage.removeItem('user.resident_id')
-      window.location = "/"
+      setTimeout(() => {
+        window.location = '/'
+      }, 2500); // delay of 2.5 seconds
   }
 
   // setting inputs by useState(Array) hook
@@ -85,6 +93,18 @@ const SidebarRes = () => {
                 </ul>
             </div>
         </div>
+        <ToastContainer
+                position="top-center"
+                autoClose={9000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored" 
+                transition={Flip}  />
         
         </>
     );
