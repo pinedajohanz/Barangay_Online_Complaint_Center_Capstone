@@ -3,18 +3,18 @@ import {SideDataRes} from './SideDataRes'
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 const SidebarRes = () => {
-    // log out function
-    const handleLogout = () => {
-        localStorage.removeItem('user.token')
-        localStorage.removeItem('user.resident_id')
-        window.location = "/"
-    }
+  // log out function
+  const handleLogout = () => {
+      localStorage.removeItem('user.token')
+      localStorage.removeItem('user.resident_id')
+      window.location = "/"
+  }
 
-    // setting inputs by useState(Array) hook
+  // setting inputs by useState(Array) hook
   const [PersoInfo, setPersoInfo] = useState([]);
   const token = localStorage.getItem('user.token')
 
-    // get user's resident_id & token from local storage of browser 
+  // get user's resident_id & token from local storage of browser 
   const resident_id = localStorage.getItem('user.resident_id')
 
   async function getPersoInfo() {
@@ -29,7 +29,7 @@ const SidebarRes = () => {
       method: "GET",
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`},
       body: JSON.stringify()
-  });
+    });
     // API returns an array of personal information then saved 'PersoInfoArray'.
     const PersoInfoArray = await res.json();
 
@@ -77,6 +77,7 @@ const SidebarRes = () => {
                             </li>
                         );
                     })}
+                    {/* LOG OUT button */}
                     <div className='row' id='logout'>
                     <ExitToAppIcon />
                     <button className='btn btn-dark' onClick={handleLogout}><ExitToAppIcon /> Log out</button>
