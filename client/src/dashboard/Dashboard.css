@@ -100,7 +100,10 @@ i {
     box-shadow: 5px 5px 5px 5px #ccc;
 }
 
-
+.welcome {
+    height:auto;
+    display:contents;
+}
 
 .sidebarresident, .sidebaradmin{
     /* position: fixed; */
@@ -111,7 +114,7 @@ i {
 }
 
 .SidebarList {
-    height: 100%;
+    /* height: 100%; */
     padding: 0;
     width: 100%
 }
