@@ -45,8 +45,8 @@ const AboutPage = () => {
                             src="https://randomuser.me/api/portraits/men/15.jpg" 
                             className="rounded-circle mb-3" alt="">
                             </img>
-                            <h3 className='card-title mb-3'>Joshua Pineda</h3>
-                            
+                            <h3 className='card-title mb-1'>Joshua Pineda</h3>
+                            <p className='card-text'>Punong Barangay</p>
                         </div>
                     </div>
                 </div>
@@ -57,8 +57,8 @@ const AboutPage = () => {
                             src="https://randomuser.me/api/portraits/men/24.jpg" 
                             className="rounded-circle mb-3" alt="">
                             </img>
-                            <h3 className='card-title mb-3'>Leo Murphy</h3>
-                            <p className='card-text'></p>
+                            <h3 className='card-title mb-1'>Leo Murphy</h3>
+                            <p className='card-text'>Barangay Secretary</p>
                             
                         </div>
                     </div>
@@ -70,8 +70,8 @@ const AboutPage = () => {
                             src="https://randomuser.me/api/portraits/women/26.jpg" 
                             className="rounded-circle mb-3" alt="">
                             </img>
-                            <h3 className='card-title mb-3'>Juria Medina</h3>
-                            <p className='card-text'></p>
+                            <h3 className='card-title mb-1'>Juria Medina</h3>
+                            <p className='card-text'>Barangay Treasurer</p>
                             
                         </div>
                     </div>
@@ -83,8 +83,8 @@ const AboutPage = () => {
                             src="https://randomuser.me/api/portraits/women/50.jpg" 
                             className="rounded-circle mb-3" alt="">
                             </img>
-                            <h3 className='card-title mb-3'>Jiheon Morales</h3>
-                            <p className='card-text'></p>
+                            <h3 className='card-title mb-1'>Jiheon Morales</h3>
+                            <p className='card-text'>Sangguniang Kabataan Chairwoman</p>
                             
                         </div>
                     </div>
