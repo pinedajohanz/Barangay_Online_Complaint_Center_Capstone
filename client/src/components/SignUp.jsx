@@ -210,7 +210,7 @@ export const SignUp = ( {setAuth} ) => {
                                     isInvalid={!!errors.contact_number}
                                     isValid={touched.contact_number && !errors.contact_number}
                                     type="number" 
-                                    placeholder="09975113834" 
+                                    placeholder="+639975113834" 
                                     />
                                     <Form.Control.Feedback type="invalid">
                                         {errors.contact_number}

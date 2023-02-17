@@ -75,7 +75,7 @@ function FileComplaint() {
             <label className="fs-4">Complaint message:</label>
             <textarea className="form-control my-3" type="text" placeholder="Write your Complaint here...." value={message_comp} onChange={e => setmessage_comp(e.target.value)} required />
             <label className="fs-4">Location of Complaint:</label>
-            <input className="form-control my-3" type="text" placeholder="Mary Homes Subdivision" value={location_of_complaint} onChange={e => setlocation_of_complaint(e.target.value)} required/>
+            <input className="form-control my-3" type="text" placeholder="(e.g. Mary Homes Subdivision)" value={location_of_complaint} onChange={e => setlocation_of_complaint(e.target.value)} required/>
             <label className="fs-4">Type of Complaint:</label>
             <input className="form-control my-3" type="text" placeholder="(Road Issue, Drainage Issue, Electrical Issue)" value={type_of_complaint} onChange={e => settype_of_complaint(e.target.value)} required />
             <label className="fs-5">User ID# <span className='fs-6 fw-light'>(AUTO GENERATED)</span></label>
