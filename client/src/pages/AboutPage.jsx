@@ -31,7 +31,7 @@ const AboutPage = () => {
         </div>
     </section>
 
-    <section id="section-team" className="p-5 bg-primary">
+    <section id="section-team" className="p-5 bg-dark">
         <div className="container-team">
             <h2 className="text-center text-white"> Our Barangay Team</h2>
             <p className="lead text-center text-white mb-5">
@@ -46,7 +46,7 @@ const AboutPage = () => {
                             className="rounded-circle mb-3" alt="">
                             </img>
                             <h3 className='card-title mb-1'>Joshua Pineda</h3>
-                            <p className='card-text'>Punong Barangay</p>
+                            <p className='card-text'>Barangay Chairman</p>
                         </div>
                     </div>
                 </div>
