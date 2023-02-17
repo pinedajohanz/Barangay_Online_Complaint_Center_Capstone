@@ -10,7 +10,7 @@ import * as yup from 'yup';
 import { ToastContainer, toast, Flip } from 'react-toastify'; 
 import log_in_img from './image/log_in_img.svg'
 
-export const LogIn = ({ setAuth }) => {
+export const LogIn = () => {
     // toastify notifications
     const notifyLogIn = () => {
         toast.success("Log in Credentials Accepted!")
@@ -89,8 +89,12 @@ export const LogIn = ({ setAuth }) => {
             </div>
             <div className="col-md-6 form-box d-flex p-4 m-auto justify-content-center shadow-lg">
             <Formik 
+            // validationSchema - describes the validation requirements for each field
             validationSchema={validationSchema}
-            initialValues={{ username: '', password: '' }} 
+            initialValues={{ 
+                username: '', 
+                password: '' 
+            }} 
             onSubmit={onSubmitForm}
             >   
                 {({  isSubmitting, handleSubmit, handleChange, values, touched, errors  }) => (
@@ -104,7 +108,10 @@ export const LogIn = ({ setAuth }) => {
                                         name="username" 
                                         value={values.username} 
                                         onChange={handleChange} 
+                                        // if set to true will display error message in form control
                                         isInvalid={!!errors.username}
+                                        // touched - indicates whether a field has been touched by the user
+                                        // errors - contains any validation errors for the field
                                         isValid={touched.username && !errors.username}
                                         type="username" 
                                         placeholder="(e.g. Johanz23)" 
@@ -119,7 +126,10 @@ export const LogIn = ({ setAuth }) => {
                                         <Form.Control name="password" 
                                         value={values.password}
                                         onChange={handleChange} 
+                                        // if set to true will display error message in form control
                                         isInvalid={!!errors.password}
+                                        // touched - indicates whether a field has been touched by the user
+                                        // errors - contains any validation errors for the field
                                         isValid={touched.password && !errors.password}
                                         type="password" 
                                         placeholder="***********" 

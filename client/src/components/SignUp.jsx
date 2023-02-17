@@ -9,7 +9,7 @@ import * as yup from 'yup';
 import { Formik } from 'formik';
 import { ToastContainer, toast, Flip } from 'react-toastify'; 
 
-export const SignUp = ( {setAuth} ) => {
+export const SignUp = () => {
 
     const notifyCreate = () => {
         toast.success("Account Created!")
@@ -55,19 +55,11 @@ export const SignUp = ( {setAuth} ) => {
         password: yup.string().min(5, "Password must be at least 5 characters").max(25, "Maximum of 25 characters").required("Password is required")
     })
 
-    
-    //setting the inputs
-    // const onChange = (e) => {    //username     : testusername   
-    //     setFormData({ ...formData, [e.target.name]: e.target.value })
-    // }
-
     const handleSubmitForm = async (values, { setSubmitting, setErrors }) => {
         try {
-            // e.preventDefault()
-            //fetch api for POST method
+            // fetch api for POST method
             const res = await axios.post("http://localhost:5000/signup", values)
-            // // response from server is stored in 'res'
-            // .then(res => {
+            // response from server is stored in 'res'
                 // if we got a 200 status it will redirect to Log In page
                 if(res.status === 200){
                     notifyCreate()
@@ -92,6 +84,7 @@ export const SignUp = ( {setAuth} ) => {
         <NavbarBootstrap />
         <div className="form-box d-flex mx-auto my-5 align-items-center justify-content-center shadow-lg">
             <Formik
+            // validationSchema - describes the validation requirements for each field
             validationSchema={schema}
             initialValues={{
                 first_name: "",
@@ -117,7 +110,10 @@ export const SignUp = ( {setAuth} ) => {
                                     name="first_name" 
                                     value={values.first_name} 
                                     onChange={handleChange} 
+                                    // if set to true will display error message in form control
                                     isInvalid={!!errors.first_name}
+                                    // touched - indicates whether a field has been touched by the user
+                                    // errors - contains any validation errors for the field
                                     isValid={touched.first_name && !errors.first_name}
                                     type="text" 
                                     placeholder="Johanz Robert" 
@@ -133,7 +129,10 @@ export const SignUp = ( {setAuth} ) => {
                                     name="middle_init" 
                                     value={values.middle_init} 
                                     onChange={handleChange} 
+                                    // touched - indicates whether a field has been touched by the user
+                                    // errors - contains any validation errors for the field
                                     isValid={touched.middle_init && !errors.middle_init}
+                                    // if set to true will display error message in form control
                                     isInvalid={!!errors.middle_init}
                                     placeholder="B." 
                                     />
@@ -148,7 +147,10 @@ export const SignUp = ( {setAuth} ) => {
                                     name="last_name" 
                                     value={values.last_name} 
                                     onChange={handleChange} 
+                                    // if set to true will display error message in form control
                                     isInvalid={!!errors.last_name}
+                                    // touched - indicates whether a field has been touched by the user
+                                    // errors - contains any validation errors for the field
                                     isValid={touched.last_name && !errors.last_name}
                                     type="text" 
                                     placeholder="Pineda" 
@@ -163,7 +165,10 @@ export const SignUp = ( {setAuth} ) => {
                                     name="birthday" 
                                     value={values.birthday} 
                                     onChange={handleChange} 
+                                    // if set to true will display error message in form control
                                     isInvalid={!!errors.birthday}
+                                    // touched - indicates whether a field has been touched by the user
+                                    // errors - contains any validation errors for the field
                                     isValid={touched.birthday && !errors.birthday}
                                     type="date" 
                                     placeholder="DD/MM/YYYY"  
@@ -178,7 +183,10 @@ export const SignUp = ( {setAuth} ) => {
                                     name="subdivision_address" 
                                     value={values.subdivision_address} 
                                     onChange={handleChange} 
+                                    // if set to true will display error message in form control
                                     isInvalid={!!errors.subdivision_address}
+                                    // touched - indicates whether a field has been touched by the user
+                                    // errors - contains any validation errors for the field
                                     isValid={touched.subdivision_address && !errors.subdivision_address}
                                     type="text" 
                                     placeholder="Westlake subdivision" 
@@ -193,7 +201,10 @@ export const SignUp = ( {setAuth} ) => {
                                     name="house_street_address" 
                                     value={values.house_street_address} 
                                     onChange={handleChange} 
+                                    // if set to true will display error message in form control
                                     isInvalid={!!errors.house_street_address}
+                                    // touched - indicates whether a field has been touched by the user
+                                    // errors - contains any validation errors for the field
                                     isValid={touched.house_street_address && !errors.house_street_address}
                                     type="text" 
                                     placeholder="North street"
@@ -207,7 +218,10 @@ export const SignUp = ( {setAuth} ) => {
                                     <Form.Control name="contact_number" 
                                     value={values.contact_number} 
                                     onChange={handleChange} 
+                                    // if set to true will display error message in form control
                                     isInvalid={!!errors.contact_number}
+                                    // touched - indicates whether a field has been touched by the user
+                                    // errors - contains any validation errors for the field
                                     isValid={touched.contact_number && !errors.contact_number}
                                     type="number" 
                                     placeholder="+639975113834" 
@@ -222,7 +236,10 @@ export const SignUp = ( {setAuth} ) => {
                                     name="email_address" 
                                     value={values.email_address} 
                                     onChange={handleChange} 
+                                    // if set to true will display error message in form control
                                     isInvalid={!!errors.email_address}
+                                    // touched - indicates whether a field has been touched by the user
+                                    // errors - contains any validation errors for the field
                                     isValid={touched.email_address && !errors.email_address}
                                     type="email_address" 
                                     placeholder="youremail@gmail.com" 
@@ -238,7 +255,10 @@ export const SignUp = ( {setAuth} ) => {
                                     name="username" 
                                     value={values.username} 
                                     onChange={handleChange} 
+                                    // if set to true will display error message in form control
                                     isInvalid={!!errors.username}
+                                    // touched - indicates whether a field has been touched by the user
+                                    // errors - contains any validation errors for the field
                                     isValid={touched.username && !errors.username}
                                     type="username" 
                                     placeholder="(e.g. Johanz23)" 
@@ -253,7 +273,10 @@ export const SignUp = ( {setAuth} ) => {
                                     <Form.Control name="password" 
                                     value={values.password}
                                     onChange={handleChange} 
+                                    // if set to true will display error message in form control
                                     isInvalid={!!errors.password}
+                                    // touched - indicates whether a field has been touched by the user
+                                    // errors - contains any validation errors for the field
                                     isValid={touched.password && !errors.password}
                                     type="password" 
                                     placeholder="***********" 
