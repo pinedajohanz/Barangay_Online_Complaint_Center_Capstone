@@ -10,7 +10,7 @@ function Respondbtn({ Complaints }) {
     }
     // retrieve user token from local storage
     const token = localStorage.getItem('user.token') 
-
+    // stores the message to be submitted as a response
     const [message_gov, setmessage_gov] = useState("");
     const { complaints_id } = Complaints
 
@@ -19,17 +19,13 @@ function Respondbtn({ Complaints }) {
     const reply = async (e) => {
         e.preventDefault();
         try {
-
             const body = {message_gov, complaints_id} 
-
-            console.log(body)
             const res = await fetch("http://localhost:5000/response", {
                 method: "POST",
                 headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`},
                 body: JSON.stringify(body)
             });
             // display notification that response is submitted
-            
             notify()
 
         } catch (err) {
@@ -55,7 +51,6 @@ function Respondbtn({ Complaints }) {
         </button>
         </div>
         {/* id = "id22" */}
-
         {/* Header of inner modal */}
         <div className="modal fade" id={`id${complaints_id}`} tabIndex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
         <div className="modal-dialog">
@@ -79,9 +74,8 @@ function Respondbtn({ Complaints }) {
             <div className="modal-body">
                 {/* Message to be sent to a complaint */}
                 <form onSubmit={reply} className="form my-1">
-                {/* <h2 className="text-center my-5">Respond to a Complaint</h2> */}
-                <label>Reply back to a Complaint:</label>
-                    <textarea className="form-control my-3" type="text" placeholder="Type here" value={message_gov} onChange={e => setmessage_gov(e.target.value)} />
+                <label>Type your message:</label>
+                    <textarea className="form-control my-3" type="text" placeholder="Type here..." value={message_gov} onChange={e => setmessage_gov(e.target.value)} />
                 {/* Edit: User na naka log in dapat naka-assign automatic sa resident ID below */}
                 <label> ID# (AUTO GENERATED)</label>
                     <input className="form-control my-3" type="number" placeholder="Complaints ID" value={complaints_id} aria-label="Disabled input example" disabled />

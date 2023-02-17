@@ -82,7 +82,6 @@ function Viewbtn({ Complaint }) {
             
             {/* body of inner modal */}
             <div className="modal-body">
-            
             <table className="table table-bordered border-success table-hover">
                 <thead>
                     <tr>

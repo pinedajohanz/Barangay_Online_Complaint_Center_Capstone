@@ -13,8 +13,9 @@ function ViewAllResidentsInfo() {
 
   // retrieve user token from local storage
   const token = localStorage.getItem('user.token') 
-
+  // object that stores search filters
   const [filters, setFilters] = useState ({
+    // matching mode that matches any value that contains the given search string.
     global: { value: null, matchMode: FilterMatchMode.CONTAINS}
   })
 
@@ -59,10 +60,11 @@ function ViewAllResidentsInfo() {
       <div className="h4 pb-2 mb-4 my-3 mx-3 text-success border-bottom border-success">
         Residents Information
       </div>
-
-      <InputText placeholder='Search' style={{width:500, marginLeft:15}}
+      {/* used to search for residents */}
+      <InputText placeholder='Search' style={{width:500, marginLeft:15, marginBottom:10}}
       onInput={(e) =>
         setFilters({
+          // updates the value of the global key in the filters state
           global: { value: e.target.value, matchMode: FilterMatchMode.CONTAINS}
         })
       } />

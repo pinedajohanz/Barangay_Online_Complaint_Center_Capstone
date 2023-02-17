@@ -13,8 +13,6 @@ function ResponseToComplaint() {
   const [searchPhrase, setSearchPhrase] = useState("")
   // retrieve user token from local storage
   const token = localStorage.getItem('user.token') 
-
-
   
   // function for sorting by ID
   const SortbyID = () => {
@@ -48,7 +46,7 @@ function ResponseToComplaint() {
     });
     setAllComp(AllCompCopy)
   }
-  // re-use function (DISPLAY ALL COMPLAINTS) for See Responses to Complaints section (ADMIN)
+
   // GET all Complaints from Residents
   async function getAllComp() {
 
@@ -106,15 +104,14 @@ function ResponseToComplaint() {
           <table className="table table-hover">
               <thead className='table-success'>
                   <tr>
-                  <th scope="col" onClick={SortbyID}> <span style={{ marginRight:5 }}>Complaint ID# </span> {renderArrow()}</th>
-                  <th scope="col">Message from Complainant</th>
-                  <th scope="col">Location of Complaint</th>
-                  <th scope="col">Type of Complaint</th>
-                  <th scope="col">Date & Time</th>
-                  <th scope="col"> Name </th>
-                  <th scope="col" onClick={SortbyStatus}> <span style={{ marginRight:10 }}> Status </span> {renderArrow()}</th>
-                  <th scope="col">Respond to Complaint</th>
-
+                    <th scope="col" onClick={SortbyID}> <span style={{ marginRight:5 }}>Complaint ID# </span> {renderArrow()}</th>
+                    <th scope="col">Message from Complainant</th>
+                    <th scope="col">Location of Complaint</th>
+                    <th scope="col">Type of Complaint</th>
+                    <th scope="col">Date & Time</th>
+                    <th scope="col"> Name </th>
+                    <th scope="col" onClick={SortbyStatus}> <span style={{ marginRight:10 }}> Status </span> {renderArrow()}</th>
+                    <th scope="col">Respond to Complaint</th>
                   </tr>
               </thead>
               <tbody>
@@ -127,10 +124,6 @@ function ResponseToComplaint() {
               } else if (`${Complaints.complaints_id} ${Complaints.message_comp} ${Complaints.location_of_complaint} ${Complaints.type_of_complaint} ${Complaints.date_time} ${Complaints.status_msg} `.toLowerCase().includes(searchPhrase.toLowerCase())) {
                 return Complaints
               }
-              
-              // this variable put inside td tag 
-              // let text = 
-
               // map/display out the returned Complaints
               }).map( Complaints => (
                     <tr key={Complaints.complaints_id}>
@@ -140,9 +133,6 @@ function ResponseToComplaint() {
                       <td>{Complaints.type_of_complaint}</td>
                       <td>{Complaints.date_time}</td>
                       <td>{Complaints.first_name} {Complaints.last_name}</td>
-                      {/* if in progress violet color
-                      if completed green color
-                      remove font weight bold */}
                       <td 
                       style={{ color: Complaints.status_msg  === 'IN PROGRESS'? 'black': 'green'}}
                       className='fw-semibold'
