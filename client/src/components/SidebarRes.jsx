@@ -94,7 +94,7 @@ const SidebarRes = () => {
             </div>
         </div>
         <ToastContainer
-                position="top-center"
+                position="top-right"
                 autoClose={9000}
                 hideProgressBar={false}
                 newestOnTop={false}
