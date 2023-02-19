@@ -57,6 +57,8 @@ function FileComplaint() {
             });
             // pop up notification if form submitted
             notify()
+            // reset form after submit
+            ResetForm()
         
         console.log(res)
         } catch (err) {
@@ -81,18 +83,13 @@ function FileComplaint() {
             <label className="fs-5">User ID# <span className='fs-6 fw-light'>(AUTO GENERATED)</span></label>
             <input className="form-control my-3" type="number" placeholder="RESIDENT ID" value={resident_id} aria-label="Disabled input example" disabled />
             
-            <div className='d-grid gap-2'>
-            <button className="btn btn-primary my-2 btn-lg" >Submit</button>
-            </div>
-            <hr />
-            <div className='d-grid gap-1'>
-            <button className="btn btn-secondary my-2 btn-lg" onClick={ResetForm} style={{padding:10}}>
-                <div style={{marginRight:10}}>
-                <ClearIcon />
-                </div>
+            <div className=' gap-2'>
+            <button className="col-9 btn btn-primary my-2 btn-lg" >Submit</button>
+            <button className="col-3 btn btn-secondary my-2 btn-md" onClick={ResetForm} style={{padding:10, width:250, marginLeft:20}}>
                 Clear Form
                 </button>
             </div>
+            
         </form>
     </div>
     <ToastContainer
