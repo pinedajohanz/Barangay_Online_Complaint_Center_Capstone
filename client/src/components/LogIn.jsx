@@ -59,7 +59,7 @@ export const LogIn = () => {
                     notifyLogIn()
                     notifyResidentPage()
                     setTimeout(() => {
-                        window.location = '/MyProfile'
+                        window.location = '/FileComplaint'
                     }, 2500); // delay of 2.5 seconds
                     break 
             } 
