@@ -39,26 +39,30 @@ function MyProfile() {
 
   return (
     <>
-    <div className='main'>
-    <SidebarRes />
-    <div className="container text-bg-light mx-5 my-5">
-      {/* maps over an array to display each item in a row from state */}
-    {PersoInfo.map(Info => (
-      <div className="col my-4 mx-4">
-                <div className="card-body p-4">
-                  <h3 className='text-success'>My Profile</h3>
-                  <hr className="mt-0 mb-4" />
-                  <div className="row pt-1">
-                    <div className="col-6 mb-3">
+      <div className='main'>
+        <SidebarRes />
+        <div className="container text-bg-light mx-5 my-5">
+          {/* maps over an array to display each item in a row from state */}
+          {PersoInfo.map(Info => (
+            <div className="col my-4 mx-4">
+              <div className="card-body p-4">
+                <h3 className='text-success'>My Profile</h3>
+                <hr className="mt-0 mb-4" />
+                <div className="row pt-1">
+                  <div className="col mb-3">
                       <h5>User ID#</h5>
                       <p className="text-muted">{Info.resident_id} </p>
                     </div>
-                    <div className="col-6 mb-3">
-                      <h5>First Name</h5>
-                      <p className="text-muted">{Info.first_name} </p>
+                  </div>
+                  <hr/>
+                  <div className="row pt-1">
+                    <div className="col mb-3">
+                        <h5>First Name</h5>
+                        <p className="text-muted">{Info.first_name} </p>
                     </div>
                   </div>
-                  
+                
+
                   <hr className="mt-0 mb-4" />
                   <div className="row pt-1">
                     <div className="col-6 mb-3">
@@ -103,12 +107,12 @@ function MyProfile() {
                       <p className="text-muted">{Info.username} </p>
                     </div>
                   </div>
-                </div>
+              </div>
+            </div>
+          ))}
+            
         </div>
-      ))}
-        
-    </div>
-    </div>
+      </div>
     </>
   )
 }
