@@ -164,7 +164,7 @@ app.post("/response", auth, async (req, res) => {
 // DISPLAY ALL complaints with status (ADMIN SIDE)
 app.get("/allcomplaints", auth, async (req, res) => {
     try {
-        const  allComplaints = await  pool.query('SELECT * FROM residents INNER JOIN Complaints ON residents.resident_id = complaints.resident_id INNER JOIN status_info  ON complaints.status_info_id = status_info.status_info_id ORDER BY date_time DESC;');
+        const  allComplaints = await  pool.query('SELECT * FROM residents INNER JOIN Complaints ON residents.resident_id = complaints.resident_id INNER JOIN status_info  ON complaints.status_info_id = status_info.status_info_id WHERE complaints.deleted_at is null ORDER BY date_time DESC;');
         res.json(allComplaints.rows)
     } catch (error) {
         console.error(err.message)
@@ -223,7 +223,7 @@ app.get("/myResponse/:complaints_id", async (req, res) => {
 app.get("/myComplaints/:resident_id", auth, async (req, res) => {
     try {
         const { resident_id } = req.params
-        const myComplaints = await pool.query("SELECT complaints.resident_id, complaints.complaints_id, complaints.message_comp, status_info.status_msg FROM complaints INNER JOIN residents ON complaints.resident_id = residents.resident_id INNER JOIN status_info ON status_info.status_info_id = complaints.status_info_id WHERE complaints.resident_id = $1 ORDER BY status_msg ASC;", 
+        const myComplaints = await pool.query("SELECT complaints.resident_id, complaints.complaints_id, complaints.message_comp, status_info.status_msg FROM complaints INNER JOIN residents ON complaints.resident_id = residents.resident_id INNER JOIN status_info ON status_info.status_info_id = complaints.status_info_id WHERE complaints.resident_id = $1 and complaints.deleted_at is null ORDER BY status_msg ASC;", 
         [resident_id])
 
         res.json(myComplaints.rows)
@@ -282,15 +282,23 @@ app.delete("/complaint/:id", auth, async (req, res) => {
     try {
         const {id} = req.params
         const deleteComp = await pool.query(
-            "DELETE FROM Complaints WHERE complaints_id = $1", [
+            "UPDATE Complaints SET deleted_at = NOW() WHERE complaints_id = $1", [
             id
         ])
+
+        // const deleteComp = await pool.query(
+        //     "DELETE FROM Complaints WHERE complaints_id = $1", [
+        //     id
+        // ])
         
         res.json("Complaint was deleted")
     } catch (err) {
         console.log(err.message)
     }
 })
+
+//
+
 
 app.listen(5000,  ()  =>  { 
     console.log('App running on port 5000')  
