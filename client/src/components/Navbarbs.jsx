@@ -4,6 +4,8 @@ import LoginIcon from '@mui/icons-material/Login';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import PeopleIcon from '@mui/icons-material/People';
 import HomeIcon from '@mui/icons-material/Home';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faSignInAlt} from '@fortawesome/free-solid-svg-icons' 
 
 export const NavbarBootstrap = () => {
     return (
@@ -53,7 +55,9 @@ export const NavbarBootstrap = () => {
                     <li className="nav-item">
                         <a className="nav-link" href="/login">
                         <div className='icon-text-container'>
-                          <div className='i'> <LoginIcon /> </div>
+                          <div className='i'> 
+                            <FontAwesomeIcon icon={faSignInAlt} />
+                          </div>
                           <span> Log In</span>
                         </div>
                         </a>
