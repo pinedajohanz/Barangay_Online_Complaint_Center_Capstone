@@ -13,6 +13,9 @@ export default function ViewMyResponse() {
     // search box
     const [searchPhrase, setSearchPhrase] = useState("")
 
+    const [selectFilter, setselectFilter] = useState('ALL')
+    
+
     // retrieve user token from local storage
     const token = localStorage.getItem('user.token') 
 
@@ -98,13 +101,24 @@ export default function ViewMyResponse() {
                   <div className="h4 pb-2 mb-4 my-3 mx-3 text-success border-bottom border-success">
                     View My Responses to a Complaint
                   </div>
-                      <div className="search-container">
+                  <div class="row">
+                      <div className="search-container col-6">
                       <input 
                       type="text" 
                       placeholder="Search" 
                       onChange={event => {setSearchPhrase(event.target.value)}} 
                       />
                       </div> 
+                      <div class="col-6" style={{display: 'flex', alignItems: 'center', justifyContent: 'end'}}>
+                      <select value={selectFilter} onChange={event => {setselectFilter(event.target.value)}}  class="form-select" aria-label="Default select example" style={{marginLeft:'auto', padding:10, borderRadius:0}}>
+                        <option selected>Filter by Status</option>
+                        <option value="ALL">ALL</option>
+                        <option value="IN PROGRESS">IN PROGRESS</option>
+                        <option value="COMPLETED">COMPLETED</option>
+                        
+                      </select>
+                      </div>
+                  </div>
                   <table className="table table-hover">
                       <thead className='table-success'>
                           <tr>
@@ -125,9 +139,28 @@ export default function ViewMyResponse() {
                     // filter Complaints based on input of user 
                     } else if (`${Complaints.complaints_id} ${Complaints.type_of_complaint} ${Complaints.date_time} ${Complaints.first_name} ${Complaints.last_name} ${Complaints.status_msg} `.toLowerCase().includes(searchPhrase.toLowerCase())) {
                       return Complaints
-                    }
+                    } 
+
+                    // else if (
+                    //   `${Complaints.status_msg}`.toLowerCase().includes(selectFilter.toLowerCase())) { 
+                    //   return Complaints
+                    // }
+
                     // map/display out the returned Complaints
-                    }).map( Complaints => (
+                    })
+                    .filter((Complaints)=> {
+                      // if search bar is empty then display all complaints
+                      if (selectFilter === "ALL") {
+                        return Complaints
+                      // filter Complaints based on input of user 
+                      }
+                      else if (
+                        `${Complaints.status_msg}`.toLowerCase().includes(selectFilter.toLowerCase())) { 
+                        return Complaints
+                      }
+  
+                      // map/display out the returned Complaints
+                      }).map( Complaints => (
                           <tr key={Complaints.complaints_id}>
                             <td className='text-center'>{Complaints.complaints_id}</td>
                             <td className="text-center">{Complaints.type_of_complaint}</td>
