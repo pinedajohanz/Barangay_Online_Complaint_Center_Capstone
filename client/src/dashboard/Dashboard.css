@@ -110,13 +110,19 @@ i {
     height: 100%;
     width: 250px;
     background-color: rgb(27, 26, 26);
-    
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .SidebarList {
     /* height: 100%; */
+    flex: 1;
     padding: 0;
-    width: 100%
+    width: 100%;
+    /* min-height: 100vh; */
+    display: flex;
+    flex-direction: column;
 }
 
 .SidebarList .row {
@@ -150,7 +156,7 @@ i {
 
 }
 
-.row #title, #logout{
+.row #title {
     flex: 70%;
     
 }
@@ -160,7 +166,9 @@ i {
 }
 
 #logout {
-    height: 0px;
+    /* height: 0px; */
+    width: 100%;
+    margin-top: auto;
     
 }
 .form-box {
@@ -194,5 +202,5 @@ i {
     padding: 10px;
     font-size: 1rem;
     outline: none;
-    border: 1px solid #ccc
+    border: 1px solid #ccc;
 }

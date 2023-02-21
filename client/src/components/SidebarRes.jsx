@@ -86,11 +86,12 @@ const SidebarRes = () => {
                         );
                     })}
                     {/* LOG OUT button */}
-                    <div className='row' id='logout'>
-                    <ExitToAppIcon />
-                    <button className='btn btn-dark' onClick={handleLogout}><ExitToAppIcon /> Log out</button>
+                    <div id='logout'>
+                      <button className='btn btn-dark' style={{width:'100%'}} onClick={handleLogout}><ExitToAppIcon /> Log out</button>
                     </div>
                 </ul>
+                
+    
             </div>
         </div>
         <ToastContainer
