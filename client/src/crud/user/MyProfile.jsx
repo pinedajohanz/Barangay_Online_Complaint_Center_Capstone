@@ -41,72 +41,85 @@ function MyProfile() {
     <>
       <div className='main'>
         <SidebarRes />
-        <div className="container text-bg-light mx-5 my-5">
+        <div className="container text-bg-light mx-5 my-5" style={{width:800, textAlign:'center'}}>
           {/* maps over an array to display each item in a row from state */}
           {PersoInfo.map(Info => (
-            <div className="col my-4 mx-4">
-              <div className="card-body p-4">
+            <div className="col my-4 mx-4" style={{textAlign:'center'}}>
+              <div className="card-body p-4" style={{textAlign:'center'}}>
                 <h3 className='text-success'>My Profile</h3>
-                <hr className="mt-0 mb-4" />
+                <hr/>
                 <div className="row pt-1">
-                  <div className="col mb-3">
+                  <div className="col">
                       <h5>User ID#</h5>
                       <p className="text-muted">{Info.resident_id} </p>
-                    </div>
                   </div>
+                </div>
                   <hr/>
-                  <div className="row pt-1">
-                    <div className="col mb-3">
-                        <h5>First Name</h5>
-                        <p className="text-muted">{Info.first_name} </p>
-                    </div>
+                <div className="row pt-1">
+                  <div className="col">
+                      <h5>First Name</h5>
+                      <p className="text-muted">{Info.first_name} </p>
                   </div>
-                
+                </div>
+                <hr/>
+                <div className="row pt-1">
+                  <div className="col">
+                    <h5>Middle initial</h5>
+                    <p className="text-muted">{Info.middle_init} </p>
+                  </div>
+                </div>
+                <hr/>
+                <div className="row pt-1">
+                  <div className="col">
+                    <h5>Last Name</h5>
+                    <p className="text-muted">{Info.last_name} </p>
+                  </div>
+                </div>
 
-                  <hr className="mt-0 mb-4" />
-                  <div className="row pt-1">
-                    <div className="col-6 mb-3">
-                      <h5>Middle initial</h5>
-                      <p className="text-muted">{Info.middle_init} </p>
-                    </div>
-                    <div className="col-6 mb-3">
-                      <h5>Last Name</h5>
-                      <p className="text-muted">{Info.last_name} </p>
-                    </div>
+                <hr/>
+                <div className="row pt-1">
+                  <div className="col">
+                    <h5>Birthday</h5>
+                    <p className="text-muted">{Info.birthday} </p>
                   </div>
-                  <hr className="mt-0 mb-4" />
-                  <div className="row pt-1">
-                    <div className="col-6 mb-3">
-                      <h5>Birthday</h5>
-                      <p className="text-muted">{Info.birthday} </p>
-                    </div>
-                    <div className="col-6 mb-3">
-                      <h5>Contact Number</h5>
-                      <p className="text-muted">{Info.contact_number} </p>
-                    </div>
+                </div>
+                <hr/>
+                <div className="row pt-1">
+                  <div className="col">
+                    <h5>Contact Number</h5>
+                    <p className="text-muted">{Info.contact_number} </p>
                   </div>
-                  <hr className="mt-0 mb-4" />
-                  <div className="row pt-1">
-                    <div className="col-6 mb-3">
-                      <h5>Subdivision</h5>
-                      <p className="text-muted">{Info.subdivision_address} </p>
-                    </div>
-                    <div className="col-6 mb-3">
-                      <h5>House Street</h5>
-                      <p className="text-muted">{Info.house_street_address} </p>
-                    </div>
+                </div>
+
+                <hr/>
+                <div className="row pt-1">
+                  <div className="col">
+                    <h5>Subdivision</h5>
+                    <p className="text-muted">{Info.subdivision_address} </p>
                   </div>
-                  <hr className="mt-0 mb-4" />
-                  <div className="row pt-1">
-                    <div className="col-6 mb-3">
-                      <h5>Email</h5>
-                      <p className="text-muted">{Info.email_address} </p>
-                    </div>
-                    <div className="col-6 mb-3">
-                      <h5>Username</h5>
-                      <p className="text-muted">{Info.username} </p>
-                    </div>
+                </div>
+                <hr/>
+                <div className="row pt-1">
+                  <div className="col">
+                    <h5>House Street</h5>
+                    <p className="text-muted">{Info.house_street_address} </p>
                   </div>
+                </div>
+
+                <hr/>
+                <div className="row pt-1">
+                  <div className="col">
+                    <h5>Email</h5>
+                    <p className="text-muted">{Info.email_address} </p>
+                  </div>
+                </div>
+                <hr/>
+                <div className="row pt-1">
+                  <div className="col">
+                    <h5>Username</h5>
+                    <p className="text-muted">{Info.username} </p>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
