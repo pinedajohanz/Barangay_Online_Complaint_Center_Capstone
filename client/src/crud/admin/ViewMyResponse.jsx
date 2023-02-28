@@ -13,6 +13,7 @@ export default function ViewMyResponse() {
     // search box
     const [searchPhrase, setSearchPhrase] = useState("")
 
+    // filter button
     const [selectFilter, setselectFilter] = useState('ALL')
     
 
@@ -110,13 +111,12 @@ export default function ViewMyResponse() {
                       />
                       </div> 
                       <div class="col-6" style={{display: 'flex', alignItems: 'center', justifyContent: 'end'}}>
-                      <select value={selectFilter} onChange={event => {setselectFilter(event.target.value)}}  class="form-select" aria-label="Default select example" style={{marginLeft:'auto', padding:10, borderRadius:0}}>
-                        <option selected>Filter by Status</option>
-                        <option value="ALL">ALL</option>
-                        <option value="IN PROGRESS">IN PROGRESS</option>
-                        <option value="COMPLETED">COMPLETED</option>
-                        
-                      </select>
+                        <select value={selectFilter} onChange={event => {setselectFilter(event.target.value)}}  class="form-select" aria-label="Default select example" style={{marginLeft:'auto', padding:10, borderRadius:0}}>
+                          <option selected>Filter by Status</option>
+                          <option value="ALL">ALL</option>
+                          <option value="IN PROGRESS">IN PROGRESS</option>
+                          <option value="COMPLETED">COMPLETED</option>
+                        </select>
                       </div>
                   </div>
                   <table className="table table-hover">
@@ -130,11 +130,11 @@ export default function ViewMyResponse() {
                           <th className="text-center" scope="col">View</th>
                           </tr>
                       </thead>
-                      <tbody>
+                    <tbody>
                     {/* maps over an array to display each item in a row from state */}
                     {AllComp.filter((Complaints)=> {
                     // if search bar is empty then display all complaints
-                    if (searchPhrase === "") {
+                    if (searchPhrase == "") {
                       return Complaints
                     // filter Complaints based on input of user 
                     } else if (`${Complaints.complaints_id} ${Complaints.type_of_complaint} ${Complaints.date_time} ${Complaints.first_name} ${Complaints.last_name} ${Complaints.status_msg} `.toLowerCase().includes(searchPhrase.toLowerCase())) {
@@ -145,43 +145,41 @@ export default function ViewMyResponse() {
                     //   `${Complaints.status_msg}`.toLowerCase().includes(selectFilter.toLowerCase())) { 
                     //   return Complaints
                     // }
-
-                    // map/display out the returned Complaints
                     })
                     .filter((Complaints)=> {
-                      // if search bar is empty then display all complaints
+                      // if state equal to 'ALL' then display all complaints
                       if (selectFilter === "ALL") {
                         return Complaints
-                      // filter Complaints based on input of user 
                       }
                       else if (
+                        // if state equal 'COMPLETED' or 'IN PROGRESS' then display that status
                         `${Complaints.status_msg}`.toLowerCase().includes(selectFilter.toLowerCase())) { 
                         return Complaints
                       }
-  
+                    })
                       // map/display out the returned Complaints
-                      }).map( Complaints => (
-                          <tr key={Complaints.complaints_id}>
-                            <td className='text-center'>{Complaints.complaints_id}</td>
-                            <td className="text-center">{Complaints.type_of_complaint}</td>
-                            <td className="text-center">{Complaints.date_time}</td>
-                            <td className='text-center'>{Complaints.first_name} {Complaints.last_name}</td>
-                            <td 
-                            style={{ color: Complaints.status_msg  === 'IN PROGRESS'? 'black': 'green'}}
-                            className='fw-semibold text-center'
-                            >
-                              { Complaints.status_msg } 
-                            </td>
-                            <td>
-                              <Viewbtn 
-                              Complaint={Complaints.complaints_id} 
-                              />
-                            </td>
-                        </tr>
-                      )
-                      )
-                      }
-                      </tbody>
+                    .map( Complaints => (
+                        <tr key={Complaints.complaints_id}>
+                          <td className='text-center'>{Complaints.complaints_id}</td>
+                          <td className="text-center">{Complaints.type_of_complaint}</td>
+                          <td className="text-center">{Complaints.date_time}</td>
+                          <td className='text-center'>{Complaints.first_name} {Complaints.last_name}</td>
+                          <td 
+                          style={{ color: Complaints.status_msg  === 'IN PROGRESS'? 'black': 'green'}}
+                          className='fw-semibold text-center'
+                          >
+                            { Complaints.status_msg } 
+                          </td>
+                          <td>
+                            <Viewbtn 
+                            Complaint={Complaints.complaints_id} 
+                            />
+                          </td>
+                      </tr>
+                    )
+                    )
+                  }
+                    </tbody>
                   </table>
                 </div>
               </div>
