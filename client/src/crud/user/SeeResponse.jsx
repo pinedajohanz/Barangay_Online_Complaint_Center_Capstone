@@ -13,6 +13,8 @@ function SeeResponse() {
   const resident_id = localStorage.getItem('user.resident_id')
   // search box
   const [searchPhrase, setSearchPhrase] = useState("")
+  // filter button
+  const [selectFilter, setselectFilter] = useState('ALL')
   // retrieve user token from local storage
   const token = localStorage.getItem('user.token') 
   
@@ -97,13 +99,23 @@ function SeeResponse() {
       <div className="h4 pb-2 mb-4 my-3 mx-3 text-success border-bottom border-success">
           See My Complaints
       </div>
-      <div className="search-container">
-        <input 
-        type="text" 
-        placeholder="Search" 
-        onChange={event => {setSearchPhrase(event.target.value)}} 
-        />
-      </div> 
+      <div class="row">
+        <div className="search-container">
+          <input 
+          type="text" 
+          placeholder="Search" 
+          onChange={event => {setSearchPhrase(event.target.value)}} 
+          />
+        </div> 
+        <div class="col-6" style={{display: 'flex', alignItems: 'center', justifyContent: 'end'}}>
+          <select value={selectFilter} onChange={event => {setselectFilter(event.target.value)}}  class="form-select" aria-label="Default select example" style={{marginLeft:'auto', padding:10, borderRadius:0}}>
+            <option selected>Filter by Status</option>
+            <option value="ALL">ALL</option>
+            <option value="IN PROGRESS">IN PROGRESS</option>
+            <option value="COMPLETED">COMPLETED</option>
+          </select>
+        </div>
+        </div>
           <table className="table table-hover">
               <thead className='table-success'>
                   <tr>
@@ -117,14 +129,26 @@ function SeeResponse() {
               {/* maps over an array to display each item in a row from state */}
               {MyComplaints.filter((Complaints)=> {
               // if search bar is empty then display all complaints
-              if (searchPhrase === "") {
+              if (searchPhrase == "") {
                 return Complaints
               // filter Complaints based on input of user 
               } else if (`${Complaints.complaints_id} ${Complaints.message_comp} ${Complaints.status_msg} `.toLowerCase().includes(searchPhrase.toLowerCase())) {
                 return Complaints
               }
+              })
+              .filter((Complaints)=> {
+                // if state equal to 'ALL' then display all complaints
+                if (selectFilter === "ALL") {
+                  return Complaints
+                }
+                else if (
+                  // if state equal 'COMPLETED' or 'IN PROGRESS' then display that status
+                  `${Complaints.status_msg}`.toLowerCase().includes(selectFilter.toLowerCase())) { 
+                  return Complaints
+                }
+              })
               // map/display out the returned Complaints
-              }).map( Complaints => (
+              .map( Complaints => (
                     <tr key={Complaints.MyComplaints}>
                       <td className="text-center" >{Complaints.complaints_id}</td>
                       <td className="text-center" >{Complaints.message_comp}</td>
