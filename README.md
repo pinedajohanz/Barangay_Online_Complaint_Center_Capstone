@@ -1,4 +1,4 @@
-![Front_Page](/landpagecp.jpg)
+![Front_Page](/Landpagecp1.jpg)
 # Barangay Online Complaint Center
 
 An online web application that allows residents to file complaints and the barangay to respond and manage the complaints and their status.
