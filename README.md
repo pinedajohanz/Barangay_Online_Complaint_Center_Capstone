@@ -1,4 +1,9 @@
-![Front_Page](/Landpagecp1.jpg) ![Admin_Page](/adminpage.jpg) ![Resident_Page](/residentpage.jpg)
+## Home Page
+![Front_Page](/Landpagecp1.jpg) 
+## Admin Page
+![Admin_Page](/adminpage.jpg) 
+## Resident Page
+![Resident_Page](/residentpage.jpg)
 
 
 # Barangay Online Complaint Center
