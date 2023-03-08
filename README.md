@@ -26,6 +26,12 @@ This project is for barangays in the Philippines and their residents who want to
 - Complaint status: The barangay can view the status of complaints that are in-progress or completed.
 - Delete a complaint: The barangay can delete a complaint if it is completed.
 
+## Tech Stacks used:
+- PostgreSQL
+- Express.js
+- React.js
+- Node.js
+- Bootstrap 
 
 
 ## Getting Started
